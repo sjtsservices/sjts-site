@@ -68,7 +68,7 @@ export const JobRouter = createTRPCRouter({
         }
     }),
 
-    list: protectedProcedure.input(ListJobSchema).query(async ({ctx, input}) => {
+    list: publicProcedure.input(ListJobSchema).query(async ({ctx, input}) => {
         try {
             const res = await paginate<Job& {
                 _count: {
