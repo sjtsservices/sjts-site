@@ -27,6 +27,9 @@ const AdminJobCardGrid = ({ onDelete }: AdminJobCardGridProps) => {
         // setLocalJobs(jobs => jobs.filter(j => j.id !== job.id));
         onDelete?.(job);
         void refetch();
+
+
+        
     }
 
 
