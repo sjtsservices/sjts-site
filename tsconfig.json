@@ -18,7 +18,13 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "@/components/*": ["'./src/components/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/server/*": ["./src/server/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/schema/*": ["./src/schema/*"],
+      "~/*": ["./src/*"],
     }
   },
   "include": [
@@ -28,6 +34,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "tailwind.config.js"  ],
   "exclude": ["node_modules"]
 }

@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
     // Further reading:
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
@@ -63,4 +63,85 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Job {
+    id              String            @id @default(cuid())
+    title           String
+    thumbnail       String?
+    desc            String?           @db.Text
+    summary         String?           @db.Text
+    skills          Json[]            @default([])
+    expiredAt       DateTime?
+    start_salary    Int?
+    max_salary      Int?
+    rate            SalaryRate        @default(MONTH)
+    experience      Int               @default(0)
+    type            JobType           @default(FULL_TIME)
+    createdAt       DateTime          @default(now())
+    updatedAt       DateTime          @updatedAt
+    applications    Applications[]
+}
+
+enum JobType {
+    FULL_TIME
+    PART_TIME
+    FREELANCE
+}
+
+enum SalaryRate {
+    HOUR
+    MONTH
+    YEAR
+}
+
+model JobSeeker {
+    id              String            @id @default(cuid())
+    name            String
+    image_url       String?
+    phone           String
+    email           String
+    state           String
+    country         String
+    city            String
+    address         String
+    cvUrl           String
+    category        JobSeekerCategory @default(GENERAL)
+    description     String?           @db.Text
+    createdAt       DateTime          @default(now())
+    updatedAt       DateTime          @updatedAt
+    applications    Applications[]
+}
+
+model Applications {
+    id          String    @id @default(cuid())
+    jobSeeker   JobSeeker @relation(fields: [jobSeekerId], references: [id], onDelete: Cascade) 
+    job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+    jobSeekerId String
+    jobId       String
+    status      ApplicationStatus   @default(PENDING)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+enum ApplicationStatus {
+    ACCEPTED
+    PENDING
+    DECLINED
+}
+
+enum JobSeekerCategory {
+    PREMIUM
+    GENERAL
+}
+
+model Enquiry {
+    id        String   @id @default(cuid())
+    name      String
+    email     String   @unique
+    phone     String?
+    message   String
+    service   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

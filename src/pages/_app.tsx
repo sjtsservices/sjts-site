@@ -1,10 +1,11 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-
 import { api } from "~/utils/api";
-
 import "~/styles/globals.css";
+import { App, ConfigProvider } from "antd";
+import MainLayout from "~/layout/MainLayout";
+import NextNProgress from 'nextjs-progressbar';
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +13,21 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <NextNProgress color="#4f46e5" />
+      <App>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#4f46e5',
+          },
+        }}
+      >
+        <MainLayout>
+        <Component {...pageProps} />
+        </MainLayout>
+      </ConfigProvider>
+      </App>
+
     </SessionProvider>
   );
 };
