@@ -16,14 +16,14 @@ export type TeamCardProps = {
 
 const teamData: TeamCardProps[] = [
     {
-        name: 'Mr. Vijay Kumar',
+        name: 'Mr. Vijay Kumar Tripathi',
         jobTitle: 'Director',
-        imageUrl: '/assets/images/team/geeta.jpg'
+        imageUrl: '/assets/images/team/pic07.jpg'
     },
     {
         name: 'Mrs. Geeta Tripathi',
         jobTitle: 'CEO',
-        imageUrl: '/assets/images/team/pic07.jpg'
+        imageUrl: '/assets/images/team/geeta.jpg'
     },
     {
         name: 'Mr. Rahul',
@@ -60,7 +60,7 @@ const teamData: TeamCardProps[] = [
 
 const shortTeamData: TeamCardProps[] = [
     {
-        name: 'Mr. Vijay Kumar',
+        name: 'Mr. Vijay Kumar Tripathi',
         jobTitle: 'Director',
         imageUrl: '/assets/images/team/pic07.jpg'
     },
