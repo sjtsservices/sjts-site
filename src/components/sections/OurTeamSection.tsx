@@ -2,6 +2,7 @@ import { Button } from 'antd'
 import { nanoid } from 'nanoid'
 import React from 'react'
 import SectionTitle from '../SectionTitle'
+import Link from 'next/link'
 
 export type OurTeamSectionProps = {
     all?: boolean,
@@ -89,7 +90,7 @@ const OurTeamSection = ({ all = false, }: OurTeamSectionProps) => {
                 {
                     !all && <div className='flex justify-between items-center'>
                         <SectionTitle title="We Support Your Dream" name="Our Team" />
-                        <Button type="primary" size='large'>All Members</Button>
+                        <Link href={'/team'}><Button type="primary" size='large'>All Members</Button></Link>
                     </div>
                 }
 
