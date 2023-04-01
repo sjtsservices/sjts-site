@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+import Link from 'next/link';
 import React from 'react'
 
 const HeroSection = () => {
@@ -9,7 +10,9 @@ const HeroSection = () => {
             <div className="flex justify-center"><span className='bg-primary text-white px-3 py-2 mb-2'>Welcome To SJTS</span></div>
             <h1 className='text-5xl md:text-6xl serif text-center mb-3'>Your One-Stop Solution For All Your Needs</h1>
             <p className='text-center'>Providing education, study abroad opportunities, entertainment, web development, government services and advertising services. A private limited company that is committed to delivering quality services to its clients. Your one-stop-shop for all your needs.</p>
-            <div className="flex justify-center mt-8"><Button size="large" type="primary">Contact Us</Button></div>
+            <div className="flex justify-center mt-8">
+              <Link href="/contact"><Button size="large" type="primary">Contact Us</Button></Link>
+            </div>
         </div>
         <div className="absolute w-full h-full left-0 top-0  bg-gradient-to-r from-purple-700/60 to-indigo-900/60"></div>
     </div>
