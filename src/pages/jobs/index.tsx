@@ -1,8 +1,7 @@
-import { Job } from '@prisma/client'
 import dynamic from 'next/dynamic';
 import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import React from 'react'
-import { createTRPCContext, createInnerTRPCContext } from '@/server/api/trpc';
+import { createInnerTRPCContext } from '@/server/api/trpc';
 import { appRouter } from '@/server/api/root';
 import superjson from 'superjson';
 import { api } from '@/utils/api';
@@ -12,12 +11,13 @@ import { api } from '@/utils/api';
 // import JobGrid from '~/components/job/JobGrid';
 import PageHeader from '~/components/PageHeader';
 import { Card, Skeleton } from 'antd';
-import { GetServerSidePropsContext } from 'next';
+import { type GetServerSidePropsContext } from 'next';
 import { getServerAuthSession } from "~/server/auth";
 import { nanoid } from 'nanoid';
-import CVUploaderInput from '~/components/inputs/CVUploaderInput';
+// import JobGrid from '~/components/job/JobGrid';
 
 const JobGrid = dynamic(() => import('~/components/job/JobGrid'), { ssr: false });
+
 
 
 

@@ -57,7 +57,7 @@ export const JobSeekerRouter = createTRPCRouter({
     }),
 
     update: protectedProcedure.input(UpdateJobSeekerSchema).mutation(async ({ctx, input}) => {
-        const {id, jobId, ...rest} = input;
+        const {id, ...rest} = input;
 
         try {
             const res = await ctx.prisma.jobSeeker.update({

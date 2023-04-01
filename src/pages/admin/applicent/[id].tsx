@@ -1,28 +1,18 @@
-import { JobListItem } from '@/schema/Job.schema'
 import superjson from 'superjson';
 import dayjs from 'dayjs';
 import React from 'react'
-import JobPageHeader from '~/components/job/JobPageHeader';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Button, Card, Result, Tabs, TabsProps } from 'antd';
-import StickyBox from 'react-sticky-box';
-import JobPageSidebar from '~/components/job/JobPageSidebar';
-import ApplyModal from '~/components/applicant/ApplyModal';
-import { isAlreadyApplied } from '@/helpers/handleSubmissionLocally';
-import { getJobSeeker } from '@/helpers/handleJobseekerLocally';
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import {  Result, Tabs, type TabsProps } from 'antd';
+import { type GetServerSidePropsContext, type InferGetServerSidePropsType } from 'next';
 import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import { appRouter } from '@/server/api/root';
 import { createInnerTRPCContext } from '@/server/api/trpc';
 import { getServerAuthSession } from '@/server/auth';
 import { api } from '@/utils/api';
-import Link from 'next/link';
-import { AppstoreOutlined, EditOutlined, FilePdfOutlined } from '@ant-design/icons';
+import { AppstoreOutlined,  FilePdfOutlined } from '@ant-design/icons';
 import FullScreenLoader from '~/components/FullScreenLoader';
 import ApplicantSidebar from '~/components/applicant/ApplicantSidebar';
-import ApplicationGrid from '~/components/applicant/ApplicationGrid';
 import PdfViewer from '~/components/applicant/PdfViewer';
-import ApplicantCard from '~/components/applicant/ApplicantCard';
 import ApplicationCard from '~/components/applicant/ApplicationCard';
 dayjs.extend(relativeTime);
 
@@ -39,6 +29,9 @@ export async function getServerSideProps(
 
   const id = context.params?.id as string;
   // console.log("IDDDDDDDDDDDDD", id)
+  if(!id) return {
+    notFound: true
+  }
   /*
    * Prefetching the `post.byId` query here.
    * `prefetch` does not return the result and never throws - if you need that behavior, use `fetch` instead.

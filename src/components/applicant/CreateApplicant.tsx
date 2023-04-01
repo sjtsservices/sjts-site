@@ -4,11 +4,8 @@
 import { type JobListItem } from '@/schema/Job.schema'
 import { JobSeeker, type Job } from '@prisma/client'
 import { api } from '@/utils/api'
-import { Card, Form, Input, InputNumber, message, Modal, notification, Radio, Select } from 'antd'
+import { Card, Form, Input, message, Modal, notification, Radio } from 'antd'
 import React, { useEffect, useImperativeHandle } from 'react'
-
-import Editor from '~/components/Editor'
-import JobSkillInput from '~/components/job/JobSkillInput'
 import CountrySelectoInput from '../inputs/CountrySlectorInput'
 import StateInput from '../inputs/StateSelectorInput'
 import CitySelectorInput from '../inputs/CitySelectorInput'

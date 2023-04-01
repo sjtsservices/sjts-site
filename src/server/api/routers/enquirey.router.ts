@@ -4,7 +4,7 @@ import { CreateEnquiry, DeleteEnquiry, UpdateEnquiry, GetEnquiry, ListEnquiry } 
 import { publicProcedure, protectedProcedure } from './../trpc';
 import { createTRPCRouter } from "../trpc";
 import { createPaginator } from 'prisma-pagination';
-import { Enquiry, type Prisma } from '@prisma/client';
+import { type Enquiry, type Prisma } from '@prisma/client';
 
 const paginate = createPaginator({perPage: 100})
 

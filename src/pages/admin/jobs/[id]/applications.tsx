@@ -30,6 +30,9 @@ export async function getServerSideProps(
 
     const id = context.params?.id as string;
     // console.log("IDDDDDDDDDDDDD", id)
+    if(!id) return {
+        notFound: true
+      }
     /*
      * Prefetching the `post.byId` query here.
      * `prefetch` does not return the result and never throws - if you need that behavior, use `fetch` instead.

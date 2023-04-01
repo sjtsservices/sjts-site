@@ -1,16 +1,16 @@
-import { JobListItem } from '@/schema/Job.schema'
+import { type JobListItem } from '@/schema/Job.schema'
 import superjson from 'superjson';
 import dayjs from 'dayjs';
 import React from 'react'
 import JobPageHeader from '~/components/job/JobPageHeader';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Button, Card } from 'antd';
+import { Card } from 'antd';
 import StickyBox from 'react-sticky-box';
 import JobPageSidebar from '~/components/job/JobPageSidebar';
 import ApplyModal from '~/components/applicant/ApplyModal';
 import { isAlreadyApplied } from '@/helpers/handleSubmissionLocally';
 import { getJobSeeker } from '@/helpers/handleJobseekerLocally';
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { type GetServerSidePropsContext, type InferGetServerSidePropsType } from 'next';
 import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import { appRouter } from '@/server/api/root';
 import { createInnerTRPCContext } from '@/server/api/trpc';
@@ -18,31 +18,6 @@ import { getServerAuthSession } from '@/server/auth';
 import { api } from '@/utils/api';
 dayjs.extend(relativeTime);
 
-
-const jobData: JobListItem = {
-  id: 'jsjbdljs',
-  title: 'Web Developer',
-  thumbnail: null,
-  expiredAt: new Date('2023-04-30'),
-  skills: [
-    { skill: 'JavaScript' },
-    { skill: 'HTML' },
-    { skill: 'CSS' },
-    { skill: 'React' }
-  ],
-  createdAt: new Date('2023-03-01'),
-  updatedAt: new Date('2023-03-01'),
-  start_salary: 50000,
-  max_salary: 70000,
-  experience: 3,
-  rate: 'MONTH',
-  type: 'FULL_TIME',
-  desc: '<h3>Job Description:</h3><p>We are seeking a talented Web Developer to join our team. The ideal candidate will have experience with JavaScript, HTML, CSS, and React. You will be responsible for developing and maintaining web applications and websites for our clients.</p><h3>Responsibilities:</h3><ul><li>Develop and maintain web applications and websites</li><li>Collaborate with cross-functional teams to identify and solve complex problems</li><li>Participate in code reviews and ensure high-quality code</li></ul><h3>Requirements:</h3><ul><li>Strong experience with JavaScript, HTML, CSS, and React</li><li>Experience with Node.js and Express.js is a plus</li><li>Excellent problem-solving and analytical skills</li><li>Good communication and collaboration skills</li></ul>',
-  summary: 'We are seeking a talented Web Developer to join our team. The ideal candidate will have experience with JavaScript, HTML, CSS, and React. You will be responsible for developing and maintaining web applications and websites for our clients.',
-  _count: {
-    applications: 20
-  }
-};
 
 
 export async function getServerSideProps(
@@ -55,6 +30,10 @@ export async function getServerSideProps(
   });
 
   const id = context.params?.id as string;
+
+  if(!id) return{
+    notFound: true
+  }
   // console.log("IDDDDDDDDDDDDD", id)
   /*
    * Prefetching the `post.byId` query here.
