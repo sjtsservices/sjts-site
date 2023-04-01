@@ -13,7 +13,8 @@ import EnquiryDetailDrawer from './EnquiryDetailDrawer';
 
 export type EnquiryTableProps = {
     data: Enquiry[],
-    onDelete?: (id: string) => void
+    onDelete?: (id: string) => void,
+    
 } & AppTableProps;
 
 const EnquiryTable = ({data,onDelete, ...rest}: EnquiryTableProps) => {

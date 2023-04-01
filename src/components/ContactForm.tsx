@@ -17,7 +17,8 @@ const ContactForm = () => {
                 title: <h3>Your enquiry submitted successfully!</h3>,
                 content: <p className="text-gray-500">Your enquiry has been successfully sent. Our team will get back to you as soon as possible. Thank you for your interest in our company.</p>
                 
-            })
+            });
+            form.resetFields();
         } catch (error) {
             void message.error('Submission failed')
         }
