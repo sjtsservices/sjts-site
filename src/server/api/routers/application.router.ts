@@ -60,6 +60,9 @@ export const ApplicationRouter = createTRPCRouter({
                 jobSeeker: JobSeeker,
                 job: Job
             }, Prisma.ApplicationsFindManyArgs>(ctx.prisma.applications, {
+                where: {
+                    jobId: input.jobId
+                },
                 include: {
                   jobSeeker: true,
                   job: true

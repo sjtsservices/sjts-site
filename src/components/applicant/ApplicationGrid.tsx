@@ -1,5 +1,5 @@
 import { api } from '@/utils/api'
-import { PlusOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, PlusOutlined } from '@ant-design/icons'
 import { type Job } from '@prisma/client'
 import { Button, Card, Result, Skeleton } from 'antd'
 import { nanoid } from 'nanoid'
@@ -24,8 +24,8 @@ const ApplicationGrid = ({jobId, onDelete, limit }: ApplicationGridProps) => {
         refetchOnWindowFocus: false,
     })
 
-    const handleDelete = (job: Job) => {
-        onDelete?.(job);
+    const handleDelete = () => {
+        // onDelete?.(job);
         void refetch();
     }
 
@@ -50,7 +50,7 @@ const ApplicationGrid = ({jobId, onDelete, limit }: ApplicationGridProps) => {
 
     if (!isLoading && applications &&  applications?.data.length <= 0 ) {
         return (
-            <Result title="No applications is created" extra={<Link href="./applications/create"><Button type="primary" icon={<PlusOutlined />}>Create new Job</Button></Link>} />
+            <Result title="No Submission Found" extra={<Link href="/admin/jobs"><Button type="primary" icon={<AppstoreOutlined />}>View Jobs</Button></Link>} />
         )
     }
 
@@ -60,7 +60,7 @@ const ApplicationGrid = ({jobId, onDelete, limit }: ApplicationGridProps) => {
         <div className='container mx-auto gap-5 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {
                 applications && applications.data.map(apl => {
-                    return <ApplicantCard application={apl} key={nanoid()}/>
+                    return <ApplicantCard onMutate={() => handleDelete()} application={apl} key={nanoid()}/>
                 })
             }
         </div>

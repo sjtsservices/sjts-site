@@ -1,23 +1,27 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { ApplicationStatus, type JobSeeker } from '@prisma/client'
-import { Button, Card, Tooltip } from 'antd'
+import { Button, Card, Dropdown, Tooltip } from 'antd'
 import React from 'react'
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link'
 import JobAvatar from '../job/JobAvatar'
-import { FilePdfOutlined, MailOutlined, MoreOutlined, PhoneOutlined, UserOutlined, WhatsAppOutlined } from '@ant-design/icons';
+import { DeleteOutlined, DownloadOutlined, FilePdfOutlined, MailOutlined, MoreOutlined, PhoneOutlined, UserOutlined, WhatsAppOutlined } from '@ant-design/icons';
 import ApplicationStatusTag from './ApplicationStatusTag';
 import { ApplicationListItem } from '@/schema/Applications.schema';
+import { nanoid } from 'nanoid';
+import DeleteApplication from './DeleteApplication';
+import DownloadResume from '../DownloadResume';
 
 dayjs.extend(relativeTime)
 
 export type ApplicantCardProps = {
-  application: ApplicationListItem
+  application: ApplicationListItem,
+  onMutate?: () => void
 }
 
 
-const ApplicantCard = ({ application: { jobSeeker, status } }: ApplicantCardProps) => {
+const ApplicantCard = ({ application: { jobSeeker, status, id }, onMutate }: ApplicantCardProps) => {
 
   const viewApplicantUrl = `/admin/applicent/${jobSeeker.id}`
 
@@ -39,9 +43,8 @@ const ApplicantCard = ({ application: { jobSeeker, status } }: ApplicantCardProp
           <span className='text-gray-400 font-semibold text-xs'>Applied {dayjs(jobSeeker.createdAt).fromNow()}</span>
         </div>
 
-        <div className="flex mt-2 capitalize">
-          <span className='text-gray-400 font-semibold'>{jobSeeker.state}</span>
-          <span className='text-gray-400 font-semibold'>/{jobSeeker.country}</span>
+        <div className="mt-2 capitalize">
+          <span className='text-gray-400 font-semibold'>{jobSeeker.state.trim()}/{jobSeeker.country.trim()}</span>
         </div>
 
 
@@ -50,7 +53,20 @@ const ApplicantCard = ({ application: { jobSeeker, status } }: ApplicantCardProp
             <Link href={`tel:${jobSeeker.phone}`}><Tooltip title={`Call to ${jobSeeker.phone}`}><Button icon={<PhoneOutlined/>} size="large" type="ghost"/></Tooltip></Link>
             <Link href={`https://wa.me/${jobSeeker.phone}`}><Tooltip title={`Whatsapp on ${jobSeeker.phone}`}><Button type="ghost" size="large" icon={<WhatsAppOutlined/>}/></Tooltip></Link>
             <Tooltip title="View pdf"><Button type="ghost" size="large" icon={<FilePdfOutlined/>}/></Tooltip>
-            <Tooltip title="More Options"><Button type="ghost" size="large" icon={<MoreOutlined/>}/></Tooltip>
+            <Tooltip title="More Options">
+              <Dropdown menu={{items: [
+                {
+                  key: nanoid(),
+                  label: <DeleteApplication onDelete={() => onMutate?.()} id={id}><span className='text-red-600'><DeleteOutlined/> <span>Delete</span></span></DeleteApplication>,
+                },
+                {
+                  key: nanoid(),
+                  label: <DownloadResume pdfURL={jobSeeker.cvUrl} outputFilename={`${jobSeeker.id}.pdf`}><span ><DownloadOutlined/> <span>Resume</span></span></DownloadResume>,
+                },
+              ]}}> 
+              <Button type="ghost" size="large" icon={<MoreOutlined/>}/>
+              </Dropdown>
+            </Tooltip>
         </div>
       </div>
     </Card>
