@@ -35,26 +35,27 @@ const Footer = () => {
     <>
       <div className="h-20">
       </div>
-      <footer className='w-full bg-indigo-900 text-white'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-start py-12'>
-          <div className="">
+      <footer className='w-full  bg-gradient-to-r from-[#120d50] to-[#0a0185] text-white'>
+        <div className='grid grid-cols-4 justify-items-center items-start py-12 gap-3'>
+          <div className="col-span-4 md:col-auto  ">
             <Image src={'/assets/logo/sjts-log.png'} alt="logo" width={150} height={50} />
           </div>
 
-          <div className="">
+          <div className="col-span-2 md:col-auto">
             <FooterLinkList title="Important Link" list={[
               { href: '/', lable: 'Home' },
               { href: '/contact', lable: 'Contact Us' },
               { href: '/jobs', lable: 'Jobs' }
             ]} />
           </div>
-          <div className="">
+          <div className="col-start-3 col-end-5 md:col-auto">
             <FooterLinkList title="Company" list={[
               { href: '/about', lable: 'About Us' },
               { href: '/team', lable: 'Our Team' },
             ]} />
           </div>
-          <div className="">
+
+          <div className="col-span-4 md:col-auto">
             {
               AdminButton
             }
