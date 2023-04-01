@@ -30,6 +30,7 @@
     "next": "^13.2.1",
     "next-auth": "^4.19.0",
     "nextjs-progressbar": "^0.0.16",
+    "nodemailer": "^6.9.1",
     "path-to-regexp": "^6.2.1",
     "pdfjs-dist": "^3.4.120",
     "prisma-pagination": "^0.2.3",

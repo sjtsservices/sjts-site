@@ -1,15 +1,8 @@
-import { JobListItem } from '@/schema/Job.schema'
+ 
 import superjson from 'superjson';
 import dayjs from 'dayjs';
 import React from 'react'
-import JobPageHeader from '~/components/job/JobPageHeader';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Button, Card, Skeleton } from 'antd';
-import StickyBox from 'react-sticky-box';
-import JobPageSidebar from '~/components/job/JobPageSidebar';
-import ApplyModal from '~/components/applicant/ApplyModal';
-import { isAlreadyApplied } from '@/helpers/handleSubmissionLocally';
-import { getJobSeeker } from '@/helpers/handleJobseekerLocally';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import { appRouter } from '@/server/api/root';

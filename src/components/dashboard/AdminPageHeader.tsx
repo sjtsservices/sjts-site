@@ -11,7 +11,7 @@ export type AdminPageHeaderProps = {
 }
 
 const AdminPageHeader = ({title, action}: AdminPageHeaderProps) => {
-    const {toolbarData, setToolbarData} = useToolbar();
+    const {toolbarData, setToolbarData} = useToolbar({});
   return (
     <div className='container mx-auto px-5 py-2 shadow bg-white rounded flex items-center gap-2'>
         <div className="flex-grow-0"><h1 className='text-xl md:text-2xl font-bold'>{title}</h1></div>

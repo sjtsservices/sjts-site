@@ -17,7 +17,7 @@ export const skeletonCount = Array(4).fill(null);
 
 const AdminJobCardGrid = ({ onDelete }: AdminJobCardGridProps) => {
     const { search, sort, paginate } = useQueryData();
-    const { toolbarData, setToolbarData } = useToolbar();
+    const { toolbarData, setToolbarData } = useToolbar({});
     const { data: jobs, isLoading, isError, error, refetch } = api.jobs.list.useQuery({ paginate, searchQuery: search, sort }, {
         refetchOnWindowFocus: false,
     })
