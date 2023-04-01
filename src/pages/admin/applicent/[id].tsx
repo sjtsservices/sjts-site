@@ -1,4 +1,5 @@
 import superjson from 'superjson';
+import dynamic from 'next/dynamic';
 import dayjs from 'dayjs';
 import React from 'react'
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -12,11 +13,10 @@ import { api } from '@/utils/api';
 import { AppstoreOutlined,  FilePdfOutlined } from '@ant-design/icons';
 import FullScreenLoader from '~/components/FullScreenLoader';
 import ApplicantSidebar from '~/components/applicant/ApplicantSidebar';
-import PdfViewer from '~/components/applicant/PdfViewer';
 import ApplicationCard from '~/components/applicant/ApplicationCard';
 dayjs.extend(relativeTime);
 
-
+const PdfViewer = dynamic(() => import('~/components/applicant/PdfViewer'), {ssr: false});
 
 export async function getServerSideProps(
   context: GetServerSidePropsContext<{ id: string }>,
