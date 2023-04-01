@@ -19,7 +19,7 @@ export const skeletonCount = Array(4).fill(null);
 
 const ApplicationGrid = ({jobId, onDelete, limit }: ApplicationGridProps) => {
     const { search, sort, paginate } = useQueryData({paginate: {perPage: limit}});
-    const { toolbarData, setToolbarData } = useToolbar();
+    const { toolbarData, setToolbarData } = useToolbar({});
     const { data: applications, isLoading, isError, error, refetch } = api.application.list.useQuery({jobId, paginate, searchQuery: search , sort }, {
         refetchOnWindowFocus: false,
     })
