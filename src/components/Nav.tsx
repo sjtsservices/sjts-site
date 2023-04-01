@@ -82,8 +82,8 @@ const Nav = () => {
                     </div>
 
                     <div className="flex-grow-0 w-max space-x-2 flex">
-                        <a href='tel:7984226239' className='hidden md:block'><Button type="primary" size='large' icon={<CustomerServiceOutlined />}>+91 7984226239</Button></a>
-                        <a href='tel:7984226239' className='block md:hidden'><Button type="primary" icon={<CustomerServiceOutlined />}></Button></a>
+                        <a href='tel:7007628038' className='hidden md:block'><Button type="primary" size='large' icon={<CustomerServiceOutlined />}>+91 7007628038</Button></a>
+                        <a href='tel:7007628038' className='block md:hidden'><Button type="primary" icon={<CustomerServiceOutlined />}></Button></a>
                         <Button className='md:hidden' onClick={showDrawer} icon={<MenuOutlined/>}></Button>
                     </div>
                 </div>
