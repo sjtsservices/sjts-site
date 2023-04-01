@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { LogoutOutlined } from '@ant-design/icons'
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import { Avatar, Button, Dropdown, type MenuProps } from 'antd'
 import { useSession, signOut, signIn } from 'next-auth/react'
 import Link from 'next/link';
@@ -10,13 +10,13 @@ const UserAvatar = () => {
     const session = useSession()
 
     const items: MenuProps['items'] = [
-        {
-            label: <Link href="/u/account">Account</Link>,
-            key: '1',
-        },
-        {
-            type: 'divider',
-        },
+        // {
+        //     label: <Link href="/u/account">Account</Link>,
+        //     key: '1',
+        // },
+        // {
+        //     type: 'divider',
+        // },
         {
             label: <span onClick={() => signOut()}>Logout</span>,
             key: '3',
@@ -37,7 +37,7 @@ const UserAvatar = () => {
                 session && session.status === 'authenticated' ?
                     <>
                         <Dropdown menu={{ items }} trigger={['click']} className="w-xs">
-                            <Avatar src={session.data.user?.image} size="large"></Avatar>
+                            <Avatar  src={session.data.user?.image} size="large" className='cursor-pointer bg-gradient-to-r from-fuchsia-500 to-purple-600' icon={<UserOutlined/>}></Avatar>
                         </Dropdown>
                     </>
                     :
