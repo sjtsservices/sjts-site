@@ -75,7 +75,6 @@ const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => 
         <Header style={{ padding: 0, background: colorBgContainer, height: 'auto' }}>
           <div className="flex justify-between md:justify-end items-center px-5 py-3">
             <Button className='md:hidden' onClick={() => setOpen(true)} icon={<MenuOutlined/>}></Button>
-
             <UserAvatar/>
           </div>
         </Header>
