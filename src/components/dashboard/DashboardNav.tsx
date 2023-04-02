@@ -84,7 +84,7 @@ const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => 
         <Content style={{ margin: '0 16px', padding: '10px' }}>
           {props.children}
         </Content>
-        <Footer style={{ textAlign: 'center' }}> Powered By Interlef</Footer>
+        <Footer style={{ textAlign: 'center' }}>SJTS Private Limited</Footer>
       </Layout>
 
       <Drawer className='block md:hidden
