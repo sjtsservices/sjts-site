@@ -1,14 +1,17 @@
+import Link from 'next/link'
 import React from 'react'
 
 export type ServiceCardProps = {
     icon: any, 
     title: string,
-    desc: string
+    desc: string,
+    href?: string
 }
 
-const ServiceCard = ({icon, title, desc}: ServiceCardProps) => {
+const ServiceCard = ({icon, title, desc, href}: ServiceCardProps) => {
   return (
-    <div className='max-w-md w-full rounded-xl border-gray-200 border-solid border p-5 hover:border-gray-50 hover:shadow-xl transition-all duration-300 hover:bg-primary hover:text-white group'>
+    <Link className='block text-primary-dark' href={href||''}>
+      <div className='max-w-md w-full rounded-xl border-gray-200 border-solid border p-5 hover:border-gray-50 hover:shadow-xl transition-all duration-300 hover:bg-primary hover:text-white group'>
         <div className="flex items-center justify-center mb-3">
             <span className="inline-block text-8xl text-primary group-hover:text-white transition-all duration-300">{icon}</span>
         </div>
@@ -18,6 +21,7 @@ const ServiceCard = ({icon, title, desc}: ServiceCardProps) => {
             <p className='leading-relaxed'>{desc}</p>
         </div>
     </div>
+    </Link>
   )
 }
 

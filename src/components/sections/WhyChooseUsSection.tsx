@@ -6,15 +6,15 @@ import SectionTitle from '../SectionTitle'
 const WhyChooseUsContent = [
     {
         title: 'Extensive Industry Experience',
-        desc: 'With decades of experience across a wide range of industries, SJTS Private Limited has the expertise and knowledge to deliver innovative solutions that drive results and exceed your expectations.'
+        desc: 'With decades of experience across a wide range of industries, Aryan International LLC has the expertise and knowledge to deliver innovative solutions that drive results and exceed your expectations.'
     },
     {
         title: 'Cutting-Edge Technologies',
-        desc: 'At SJTS Private Limited, we leverage the latest technologies and tools to develop innovative solutions that solve complex challenges, drive growth, and deliver measurable results'
+        desc: 'At Aryan International LLC, we leverage the latest technologies and tools to develop innovative solutions that solve complex challenges, drive growth, and deliver measurable results'
     },
     {
         title: 'Customer-Centric Approach',
-        desc: 'At SJTS Private Limited, we leverage the latest technologies and tools to develop innovative solutions that solve complex challenges, drive growth, and deliver measurable results'
+        desc: 'At Aryan International LLC, we leverage the latest technologies and tools to develop innovative solutions that solve complex challenges, drive growth, and deliver measurable results'
     },
     {
         title: 'Global Delivery Model',
@@ -22,7 +22,7 @@ const WhyChooseUsContent = [
     },
     {
         title: 'Commitment to Quality',
-        desc: 'At SJTS Private Limited, we are committed to delivering the highest quality solutions that meet your needs and exceed your expectations. Our rigorous quality control processes ensure that every solution we deliver is of the highest standard.'
+        desc: 'At Aryan International LLC, we are committed to delivering the highest quality solutions that meet your needs and exceed your expectations. Our rigorous quality control processes ensure that every solution we deliver is of the highest standard.'
     },
     {
         title: 'Value-Based Solutions',
@@ -43,15 +43,15 @@ const ReasonCard = ({title, desc, index}: {title: string, desc: string, index: n
     )
 }
 
-const WhyChooseUsSection = () => {
-
+const WhyChooseUsSection = (props?: {content?: {title: string, desc: string}[]}) => {
+    const content = props?.content || WhyChooseUsContent;
   return (
     <div className='py-20  bg-gradient-to-r from-[#120d50] to-[#0a0185]'>
         <div className="container px-5 mx-auto space-y-14">
             <SectionTitle title="Why Choose Us" name="Why Us" centerMode={true} darkMode={true}/>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-5'>
                 {
-                    WhyChooseUsContent.map((content, index) => {
+                    content.map((content, index) => {
                         return (
                             <ReasonCard index={index+1} key={nanoid()} {...content}/>
                         )

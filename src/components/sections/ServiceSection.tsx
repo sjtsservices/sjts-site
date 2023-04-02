@@ -8,33 +8,35 @@ import SectionTitle from '../SectionTitle';
 
 const ServiceSectionContent: ServiceCardProps[] =[
     {
-        title: 'Education Service',
-        desc: 'SJTS Private Limited provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
+        title: 'Management Consultancy',
+        desc: 'Aryan International LLC provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
+        icon: <FaBookReader/>,
+        href: '/services/managment-const'
+    },
+    {
+        title: 'Human Resource Consultancy',
+        desc: 'Aryan International LLC provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
+        icon: <FaBookReader/>,
+        href: '/services/hr'
+    },
+    {
+        title: 'e-Sport/Creative Design',
+        desc: 'Aryan International LLC provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
         icon: <FaBookReader/>
     },
     {
-        title: 'Web Development',
-        desc: `SJTS Private Limited’s web development services can help you build a professional website that showcases your brand and helps you connect with your customers. Our team of experts will work with you to create a website that meets your needs and exceeds your expectations.`,
+        title: 'Education Service',
+        desc: 'Aryan International LLC provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
+        icon: <FaBookReader/>
+    },
+    {
+        title: 'Web & Software Development',
+        desc: `Aryan International LLC web development services can help you build a professional website that showcases your brand and helps you connect with your customers. Our team of experts will work with you to create a website that meets your needs and exceeds your expectations.`,
         icon: <MdWeb/>
     },
     {
-        title: 'Marketing',
-        desc: 'SJTS Private Limited’s advertising services can help you reach new customers and grow your business. Our team of marketing experts will work with you to create a customized advertising strategy that meets your needs and helps you achieve your goals.',
-        icon: <MdMail/>
-    },
-    {
-        title: 'Study Abroad',
-        desc: 'SJTS Private Limited’s study abroad programs offer students the opportunity to explore new cultures, learn new languages, and gain valuable international experience. Our programs are designed to help students grow both personally and professionally.',
-        icon: <FaGraduationCap/>
-    },
-    {
-        title: 'Government Services',
-        desc: 'SJTS Private Limited provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
-        icon: <RiGovernmentFill/>
-    },
-    {
         title: 'Entertainment Services',
-        desc: 'SJTS Private Limited offers a wide range of entertainment services to help you relax, unwind, and have fun. From movies and TV shows to music and games, we’ve got you covered.',
+        desc: 'Aryan International LLC offers a wide range of entertainment services to help you relax, unwind, and have fun. From movies and TV shows to music and games, we’ve got you covered.',
         icon: <MdMovie/>
     },
 ]

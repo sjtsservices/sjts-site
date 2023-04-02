@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex items-center justify-center border-0 border-t border-solid border-gray-500 py-3">
-          <p className='text-xs font-bold'>SJTS - {dayjs(Date.now()).format('YYYY')}</p>
+          <p className='text-xs font-bold'> &#169; Aryan International LLC - {dayjs(Date.now()).format('YYYY')}</p>
         </div>
       </footer>
     </>

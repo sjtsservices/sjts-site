@@ -13,7 +13,8 @@ const config = {
         'primary-dark': colors.indigo[900]
       },
       aspectRatio: {
-        '4/3': '3 / 4'
+        '4/3': '3 / 4',
+        '16/9': '16 / 9'
       }
     },
   },

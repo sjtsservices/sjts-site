@@ -45,7 +45,7 @@ const AboutPage = () => {
                         <h3 className='text-2xl serif'>Our Vision</h3>
                         <div>
                             <p className='leading-relaxed'>
-                                At SJTS, we strive to be a leading global provider of technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services. Our vision is to develop world-class learning, governance, and empowerment systems that are value-based and responsive to the individual and social developmental needs of people, by bridging the digital divide.
+                                At Aryan International LLC, we strive to be a leading global provider of technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services. Our vision is to develop world-class learning, governance, and empowerment systems that are value-based and responsive to the individual and social developmental needs of people, by bridging the digital divide.
                             </p>
                             <p className='leading-relaxed'>
                                 We believe in preparing people for a knowledge-based economy and society by championing the cause of lifelong learning with a developmental orientation. Our goal is to stimulate the creation of world-class knowledge resources and provide universal access to them through information technology. We aim to bridge the digital divide and the resultant knowledge divide by offering top-notch IT solutions that are accessible and affordable to people from all walks of life.
@@ -75,7 +75,7 @@ const AboutPage = () => {
                             <h3 className='text-2xl serif'>Our Mission</h3>
                             <div>
                                 <p className='leading-relaxed'>
-                                    At SJTS, we strive to be a leading global provider of technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services. Our vision is to develop world-class learning, governance, and empowerment systems that are value-based and responsive to the individual and social developmental needs of people, by bridging the digital divide.
+                                    At Aryan International LLC, we strive to be a leading global provider of technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services. Our vision is to develop world-class learning, governance, and empowerment systems that are value-based and responsive to the individual and social developmental needs of people, by bridging the digital divide.
                                 </p>
                                 <p className='leading-relaxed'>
                                     We believe in preparing people for a knowledge-based economy and society by championing the cause of lifelong learning with a developmental orientation. Our goal is to stimulate the creation of world-class knowledge resources and provide universal access to them through information technology. We aim to bridge the digital divide and the resultant knowledge divide by offering top-notch IT solutions that are accessible and affordable to people from all walks of life.

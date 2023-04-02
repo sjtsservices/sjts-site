@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import ContactForm from '~/components/ContactForm'
 import PageHeader from '~/components/PageHeader'
@@ -9,6 +10,11 @@ import MissionVisionSection from '~/components/sections/MissionVisionSection'
 const Contact = () => {
     return (
         <>
+        <Head>
+        <title>SJTS: Your One-Stop Solution For All Your Needs</title>
+        <meta name="description" content="Our company offers expert advice and great solutions for your needs. We pride ourselves on being a top choice for businesses and individuals looking for reliable, efficient services. With our commitment to excellence, you can trust us to deliver results. Explore our site today and discover why we're the right choice for you." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <PageHeader title='Contact Us' />
 
             <div className="container px-5 mx-auto py-20">

@@ -38,9 +38,9 @@ function generateDrobdownItem(links: NavLinkProps[]): MenuProps['items']{
 
     const out = links.map(link => {
         return {
-            label: (<a target="_blank" rel="noopener noreferrer" href={link.href}>
+            label: <a target="_blank" rel="noopener noreferrer" href={link.href}>
                     {link.lable}
-                  </a>),
+                  </a>,
             key: nanoid()
         }
     });
@@ -61,8 +61,15 @@ function NavLink({ href, lable, childLinks }: NavLinkProps) {
         !childLinks && <LinkButton {...{href, lable}} isChild={childLinks?true:false} isActive={typeof isActive === 'boolean' ? isActive : false}  />
     }
     {
-        childLinks && <Dropdown menu={{items: generateDrobdownItem(childLinks)}}>
-            <LinkButton {...{href, lable}} isChild={childLinks?true:false} isActive={typeof isActive === 'boolean' ? isActive : false}  />
+        childLinks && <Dropdown trigger={['hover']} menu={{items: generateDrobdownItem(childLinks)}}>
+            {/* <LinkButton {...{href, lable}} isChild={childLinks?true:false} isActive={typeof isActive === 'boolean' ? isActive : false}  /> */}
+            <span className={`
+            hover:text-primary
+            transition-all
+            inline-flex items-center
+            space-x-1
+            cursor-pointer
+            `}>{lable}</span>
         </Dropdown>
     }
     </>

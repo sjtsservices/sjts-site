@@ -31,24 +31,36 @@ const Nav = () => {
             lable: 'Our Team'
         },
 
-        // {
-        //     href: '#',
-        //     lable: 'Company',
-        //     childLinks: [
-        //         {
-        //             href: '#',
-        //             lable: 'Our Partners',
-        //         },
-        //         {
-        //             href: '#',
-        //             lable: 'Our Team'
-        //         },
-        //         {
-        //             href: '#',
-        //             lable: 'About Us'
-        //         }
-        //     ]
-        // },
+        {
+            href: '#',
+            lable: 'Services',
+            childLinks: [
+                {
+                    href: '#',
+                    lable: 'Managment Consultancy',
+                },
+                {
+                    href: '/services/hr',
+                    lable: 'HR Consultancy'
+                },
+                {
+                    href: '#',
+                    lable: 'e-Sport & Creative Design'
+                },
+                {
+                    href: '#',
+                    lable: 'International Education Service'
+                },
+                {
+                    href: '#',
+                    lable: 'Web Design & Development'
+                },
+                {
+                    href: '#',
+                    lable: 'Digital Media & Entertainment'
+                },
+            ]
+        },
         {
             href: '/jobs',
             lable: 'Jobs'
@@ -68,7 +80,7 @@ const Nav = () => {
             <nav className='w-full bg-white'>
                 <div className="container mx-auto px-5 flex items-center py-3">
                     <div className="flex flex-grow-0">
-                        <Image src={'/assets/logo/sjts-log.png'} alt="SJTS" width={100} height={30} priority />
+                        <Image src={'/assets/logo/sjts-log.png'} alt="Aryan International LLC" width={100} height={30} priority />
                     </div>
 
                     <div className="flex-grow">
@@ -89,7 +101,7 @@ const Nav = () => {
                 </div>
             </nav>
 
-            <Drawer title="SJTS" width={265} placement="left" onClose={onClose} open={open}>
+            <Drawer title="Aryan International LLC" width={265} placement="left" onClose={onClose} open={open}>
                 <MobileNav onChange={() => onClose()}/>
             </Drawer>
         </>

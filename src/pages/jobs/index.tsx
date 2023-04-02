@@ -16,7 +16,22 @@ import { getServerAuthSession } from "~/server/auth";
 import { nanoid } from 'nanoid';
 // import JobGrid from '~/components/job/JobGrid';
 
-const JobGrid = dynamic(() => import('~/components/job/JobGrid'), { ssr: false });
+const JobGrid = dynamic(
+    () => import('~/components/job/JobGrid'), 
+    { 
+        ssr: false, 
+        loading: () => {
+            return (
+                <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-5'>
+                    {
+                        Array(4).fill(null).map(v => {
+                            return <Card key={nanoid()} loading={true}></Card>
+                        })
+                    }
+                </div>
+            )
+        }
+    });
 
 
 
