@@ -36,7 +36,7 @@ const Nav = () => {
             lable: 'Services',
             childLinks: [
                 {
-                    href: '#',
+                    href: '/services/consultancy',
                     lable: 'Managment Consultancy',
                 },
                 {
@@ -44,19 +44,19 @@ const Nav = () => {
                     lable: 'HR Consultancy'
                 },
                 {
-                    href: '#',
+                    href: '/services/e-sport',
                     lable: 'e-Sport & Creative Design'
                 },
                 {
-                    href: '#',
+                    href: '/services/education',
                     lable: 'International Education Service'
                 },
                 {
-                    href: '#',
+                    href: '/services/web-development',
                     lable: 'Web Design & Development'
                 },
                 {
-                    href: '#',
+                    href: '/services/entertainment',
                     lable: 'Digital Media & Entertainment'
                 },
             ]
@@ -102,7 +102,7 @@ const Nav = () => {
             </nav>
 
             <Drawer title="Aryan International LLC" width={265} placement="left" onClose={onClose} open={open}>
-                <MobileNav onChange={() => onClose()}/>
+                <MobileNav navLinks={navLinks} onChange={() => onClose()}/>
             </Drawer>
         </>
     )

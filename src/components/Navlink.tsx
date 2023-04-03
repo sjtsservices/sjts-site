@@ -38,9 +38,9 @@ function generateDrobdownItem(links: NavLinkProps[]): MenuProps['items']{
 
     const out = links.map(link => {
         return {
-            label: <a target="_blank" rel="noopener noreferrer" href={link.href}>
+            label: <Link href={link.href} prefetch={true}>
                     {link.lable}
-                  </a>,
+                  </Link>,
             key: nanoid()
         }
     });
@@ -55,13 +55,14 @@ function NavLink({ href, lable, childLinks }: NavLinkProps) {
   const isActive = matchRoute(href, router.asPath).valueOf();
   // console.log({isActive, href, pahname: router.asPath})
   // const isActive = false;
+
   return (
     <>
     {
         !childLinks && <LinkButton {...{href, lable}} isChild={childLinks?true:false} isActive={typeof isActive === 'boolean' ? isActive : false}  />
     }
     {
-        childLinks && <Dropdown trigger={['hover']} menu={{items: generateDrobdownItem(childLinks)}}>
+        childLinks && <Dropdown trigger={['hover']} menu={{items: generateDrobdownItem(childLinks),  }}>
             {/* <LinkButton {...{href, lable}} isChild={childLinks?true:false} isActive={typeof isActive === 'boolean' ? isActive : false}  /> */}
             <span className={`
             hover:text-primary
