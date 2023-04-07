@@ -26,11 +26,11 @@ const HeroSection = ({
   return (
     <div className='min-h-[calc(100vh-30px)] bg-center bg-no-repeat bg-cover flex items-center text-white relative' style={{ backgroundImage: `url(${image})` }}>
             <div className={`container mx-auto px-5 z-20 ${type === 'center' ? 'flex justify-center' : type==='right' ? 'flex justify-end': '' }`}>
-                <div className={`max-w-xl ${type === 'center' ? 'flex flex-col items-end' : type==='right' ? 'flex flex-col items-end': 'flex flex-col items-start' }`}>
+                <div className={`max-w-xl ${type === 'center' ? 'flex flex-col items-center text-center' : type==='right' ? 'flex flex-col items-end': 'flex flex-col items-start' }`}>
                     <span className='bg-primary text-white px-3 py-2 mb-2 inline-block '>{tagText}</span>
                     <div className=' serif  mb-3'>{title}</div>
                     <p className='text-base leading-tight'>{desc}</p>
-                    <div className={`flex justify-start mt-8 ${type === 'center' ? 'justify-end' : type==='right' ? 'justify-end': 'justify-start' }`}>
+                    <div className={`flex justify-start mt-8 ${type === 'center' ? 'justify-center' : type==='right' ? 'justify-end': 'justify-start' }`}>
                         {action}
                     </div>
                 </div>

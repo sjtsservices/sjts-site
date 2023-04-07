@@ -9,7 +9,7 @@ export type DeleteEnquiryProps = {
 }
 
 const DeleteEnquiry = ({id, onDelete, children}: PropsWithChildren<DeleteEnquiryProps>) => {
-    const deletMutation = api.enquiry.delete.useMutation();
+    const deletMutation = api.companyEnquiry.delete.useMutation();
 
     const deleteEnquiry = async() => {
         try {

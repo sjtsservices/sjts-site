@@ -42,6 +42,7 @@
     "react-phone-number-input": "^3.2.19",
     "react-quill": "^2.0.0",
     "react-responsive": "8.2.0",
+    "react-scroll": "^1.8.9",
     "react-sticky-box": "^2.0.0",
     "superjson": "1.9.1",
     "zod": "^3.20.6"

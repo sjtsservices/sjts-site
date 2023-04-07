@@ -3,7 +3,7 @@ import HeroSection from '../HeroSection'
 import { Button } from 'antd'
 
 const WebdHeroSection = () => {
-    const heroImage = '/assets/images/webd-hero-bg.webp'
+    const heroImage = '/assets/images/webd-hero-bg.jpg'
   return (
     <HeroSection
     image={heroImage}

@@ -66,21 +66,21 @@ model VerificationToken {
 }
 
 model Job {
-    id              String            @id @default(cuid())
-    title           String
-    thumbnail       String?
-    desc            String?           @db.Text
-    summary         String?           @db.Text
-    skills          Json[]            @default([])
-    expiredAt       DateTime?
-    start_salary    Int?
-    max_salary      Int?
-    rate            SalaryRate        @default(MONTH)
-    experience      Int               @default(0)
-    type            JobType           @default(FULL_TIME)
-    createdAt       DateTime          @default(now())
-    updatedAt       DateTime          @updatedAt
-    applications    Applications[]
+    id           String         @id @default(cuid())
+    title        String
+    thumbnail    String?
+    desc         String?        @db.Text
+    summary      String?        @db.Text
+    skills       Json[]         @default([])
+    expiredAt    DateTime?
+    start_salary Int?
+    max_salary   Int?
+    rate         SalaryRate     @default(MONTH)
+    experience   Int            @default(0)
+    type         JobType        @default(FULL_TIME)
+    createdAt    DateTime       @default(now())
+    updatedAt    DateTime       @updatedAt
+    applications Applications[]
 }
 
 enum JobType {
@@ -96,32 +96,32 @@ enum SalaryRate {
 }
 
 model JobSeeker {
-    id              String            @id @default(cuid())
-    name            String
-    image_url       String?
-    phone           String
-    email           String
-    state           String
-    country         String
-    city            String
-    address         String
-    cvUrl           String
-    category        JobSeekerCategory @default(GENERAL)
-    description     String?           @db.Text
-    createdAt       DateTime          @default(now())
-    updatedAt       DateTime          @updatedAt
-    applications    Applications[]
+    id           String            @id @default(cuid())
+    name         String
+    image_url    String?
+    phone        String
+    email        String
+    state        String
+    country      String
+    city         String
+    address      String
+    cvUrl        String
+    category     JobSeekerCategory @default(GENERAL)
+    description  String?           @db.Text
+    createdAt    DateTime          @default(now())
+    updatedAt    DateTime          @updatedAt
+    applications Applications[]
 }
 
 model Applications {
-    id          String    @id @default(cuid())
-    jobSeeker   JobSeeker @relation(fields: [jobSeekerId], references: [id], onDelete: Cascade) 
-    job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+    id          String            @id @default(cuid())
+    jobSeeker   JobSeeker         @relation(fields: [jobSeekerId], references: [id], onDelete: Cascade)
+    job         Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
     jobSeekerId String
     jobId       String
-    status      ApplicationStatus   @default(PENDING)
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    status      ApplicationStatus @default(PENDING)
+    createdAt   DateTime          @default(now())
+    updatedAt   DateTime          @updatedAt
 }
 
 enum ApplicationStatus {
@@ -146,7 +146,66 @@ model Enquiry {
     updatedAt DateTime @updatedAt
 }
 
-
 // model SiteSetting {
 //     id  String  @id
 // }
+
+model GameEvent {
+    id           String   @id @default(cuid())
+    title        String
+    link         String
+    thumbnail    String?
+    createdAt    DateTime @default(now())
+    expiredAt    DateTime
+    prize        Int      @default(0)
+    currencyCode String?
+    Game         Game?    @relation(fields: [gameId], references: [id])
+    gameId       String?
+}
+
+model Game {
+    id        String      @id @default(cuid())
+    title     String
+    thumbnail String?
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    events    GameEvent[]
+}
+
+model CompanyEnquiry {
+    id        String             @id @default(cuid())
+    name      String
+    email     String
+    phone     String?
+    message   String
+    data      Json?
+    type      CompanyEnquiryType
+    createdAt DateTime           @default(now())
+    updatedAt DateTime           @updatedAt
+}
+
+enum CompanyEnquiryType {
+    GENERAL
+    MANAGMENT
+    HR
+    DEVELOPMENT
+    DESIGN
+}
+
+
+model SiteConfig {
+    id String  @id @default(cuid())
+    email   String
+    phone   String?
+    city    String?
+    state   String?
+    country String?
+    address String?
+    baseCur String? @default("USD")
+}
+
+model Currency {
+    id String @id @default(cuid())
+    name    String
+    
+}

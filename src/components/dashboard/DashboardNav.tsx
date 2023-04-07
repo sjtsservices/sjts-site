@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { type PropsWithChildren, useState } from 'react';
 import {
+  ControlOutlined,
   DashboardOutlined, FormOutlined, MenuOutlined, ReconciliationOutlined,
 } from '@ant-design/icons';
 import { Button, Drawer, type MenuProps } from 'antd';
@@ -9,6 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import UserAvatar from './UserAvatar';
+import { FaGamepad } from 'react-icons/fa';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -32,6 +34,7 @@ const items: MenuItem[] = [
   getItem('Dashboard', '/admin', <DashboardOutlined />),
   getItem('Jobs', '/admin/jobs', <ReconciliationOutlined />),
   getItem('Enquiry', '/admin/enquiry', <FormOutlined />),
+  getItem('Game Event', '/admin/game-events', <span className='antdicon'><FaGamepad/></span>),
   //   getItem('Clients', '/dashboard/clients', <BuildOutlined />),
   //   getItem('Contacts', '/dashboard/contacts', <ContactsOutlined />),
   //   getItem('Projects', '/dashboard/projects', <FolderOpenOutlined />),

@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 import { Button, Drawer, List } from 'antd';
 import { CustomerServiceOutlined, MenuOutlined } from '@ant-design/icons';
 import MobileNav from './MobileNav';
+import Logo from './Logo';
+import Link from 'next/link';
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
@@ -78,9 +80,9 @@ const Nav = () => {
     return (
         <>
             <nav className='w-full bg-white'>
-                <div className="container mx-auto px-5 flex items-center py-3">
-                    <div className="flex flex-grow-0">
-                        <Image src={'/assets/logo/sjts-log.png'} alt="Aryan International LLC" width={100} height={30} priority />
+                <div className="container mx-auto px-5 flex items-center py-1">
+                    <div className="flex flex-grow-0 items-center">
+                        <Link href="/"><Logo/></Link>
                     </div>
 
                     <div className="flex-grow">

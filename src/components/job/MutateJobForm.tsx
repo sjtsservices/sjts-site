@@ -66,8 +66,6 @@ const MutateJobForm = React.forwardRef<HandleMutateJobForm, MutateJobFormProps>(
   useEffect(() => {
     if (props.data) {
       if(props.data.expiredAt){
-        // console.log({...props.data, expiredAt: dayjs(props.data.expiredAt)});
-        
         form.setFieldsValue({...props.data, expiredAt: dayjs(props.data.expiredAt)})
       }else{
         form.setFieldsValue(props.data)

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React from 'react'
 import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
+import Logo from '../Logo';
 
 export type FooterLinkListItem = {
   href: string,
@@ -33,12 +34,17 @@ const Footer = () => {
   const AdminButton = session ? <Link href={'/admin'}><Button type="dashed" size='large'>Dashboard</Button></Link> : <Button type="dashed" size='large' onClick={() => signIn()}>Admin Login</Button>;
   return (
     <>
-      <div className="h-20">
-      </div>
+      
       <footer className='w-full  bg-gradient-to-r from-[#120d50] to-[#0a0185] text-white'>
         <div className='grid grid-cols-4 justify-items-center items-start py-12 gap-3'>
           <div className="col-span-4 md:col-auto  ">
-            <Image src={'/assets/logo/sjts-log.png'} alt="logo" width={150} height={50} />
+            <div className="flex flex-col items-center">
+            <Link href="/"><Logo/></Link>
+            <div className="mt-1 text-center">
+              <p className='text-xl uppercase text-red-800 font-bold'>Aryan International LLC</p>
+              <p className='text-xl uppercase text-blue-700'>Continuity is sign of life</p>
+            </div>
+            </div>
           </div>
 
           <div className="col-span-2 md:col-auto">

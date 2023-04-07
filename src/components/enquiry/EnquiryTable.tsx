@@ -1,25 +1,63 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import { Enquiry } from '@prisma/client'
-import { ColumnsType } from 'antd/es/table';
+import { CompanyEnquiry, CompanyEnquiryType, type Enquiry } from '@prisma/client'
+import { type ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import React from 'react'
-import AppTable, { AppTableProps } from '../dashboard/AppTable'
+import AppTable, { type AppTableProps } from '../dashboard/AppTable'
 import DeleteEnquiry from './DeleteEnquiry';
 import EnquiryDetailDrawer from './EnquiryDetailDrawer';
 
 
-
-
-
 export type EnquiryTableProps = {
-    data: Enquiry[],
+    data: CompanyEnquiry[],
     onDelete?: (id: string) => void,
+    type?: CompanyEnquiryType
     
 } & AppTableProps;
 
-const EnquiryTable = ({data,onDelete, ...rest}: EnquiryTableProps) => {
+const extraC: {[key in CompanyEnquiryType]?: ColumnsType<CompanyEnquiry>} = {
+  [CompanyEnquiryType.GENERAL]: [
+    {
+      key: 'enq_service',
+      title: 'Service',
+      dataIndex: 'service'
+    },
+  ],
+  [CompanyEnquiryType.MANAGMENT]: [
+    {
+      key: 'enq_managment',
+      title: 'Industries',
+      dataIndex: 'industry'
+    },
+    
+  ],
+  [CompanyEnquiryType.HR]: [
+    {
+      key: 'enq_industry',
+      title: 'Industries',
+      dataIndex: 'industry'
+    },
+    {
+      key: 'enq_job',
+      title: 'Job Title',
+      dataIndex: 'jobName'
+    },
+  ],
 
-    const EnquiryTableColumns: ColumnsType<Enquiry> = [
+}
+
+const EnquiryTable = ({data,onDelete, type, ...rest}: EnquiryTableProps) => {
+
+    const extraColumns: ColumnsType<CompanyEnquiry> = (type && extraC[type])? extraC[type]||[] : [
+      {
+        key: 'enq_services',
+        title: 'Service',
+        dataIndex: 'service',
+      }
+    ]
+
+    const EnquiryTableColumns: ColumnsType<CompanyEnquiry> = [
         {
           key: 'enq_name',
           title: 'Name',
@@ -43,10 +81,11 @@ const EnquiryTable = ({data,onDelete, ...rest}: EnquiryTableProps) => {
           dataIndex: 'phone',
         },
         {
-          key: 'enq_services',
-          title: 'Service',
-          dataIndex: 'service',
+          key: 'enq_type',
+          title: 'type',
+          dataIndex: 'type',
         },
+        ...extraColumns,
         {
           key: 'enq_date',
           title: 'Date',

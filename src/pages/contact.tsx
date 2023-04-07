@@ -2,6 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import ContactForm from '~/components/ContactForm'
 import PageHeader from '~/components/PageHeader'
+import EnquiryForm from '~/components/enquiry/EnquiryForm'
+import GeneralEnquiry from '~/components/enquiry/form-parts/GeneralEnquiry'
 import ContactInfoSection from '~/components/sections/ContactInfoSection'
 import MissionVisionSection from '~/components/sections/MissionVisionSection'
 
@@ -25,7 +27,10 @@ const Contact = () => {
                 <div className="grid grid-col-1 md:grid-cols-2 shadow-lg rounded-lg overflow-hidden">
                     <div className="aspect-4/3 bg-center bg-cover bg-no-repeat" style={{backgroundImage: 'url(/assets/images/contact.webp)'}}></div>
                     <div className="p-5 py-10 md:p-16 flex items-center">
-                        <ContactForm/>
+                        {/* <ContactForm/> */}
+                        <EnquiryForm>
+                            <GeneralEnquiry/>
+                        </EnquiryForm>
                     </div>
                 </div>
             </div>

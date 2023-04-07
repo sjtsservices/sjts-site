@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, Divider, List, Skeleton, Tag } from 'antd';
 import { api } from '@/utils/api';
-import { Enquiry } from '@prisma/client';
+import { CompanyEnquiry, Enquiry } from '@prisma/client';
 import randomTailwindGradient from '~/lib/randomTailwindGradient';
 import EnquiryDetailDrawer from './EnquiryDetailDrawer';
 import dayjs from 'dayjs';
@@ -11,7 +11,7 @@ import { nanoid } from 'nanoid';
 
 dayjs.extend(realtiveTime);
 export type EnquiryListProps = {
-    enquiries: Enquiry[],
+    enquiries: CompanyEnquiry[],
     loading?: boolean,
     onDelete?: (enquiry: Enquiry) => void,
     className?: string
@@ -61,7 +61,7 @@ const EnquiryList = ({enquiries, loading, onDelete, className}: EnquiryListProps
                 <div className=''>
                     <div className=" flex flex-col gap-1">
                         <span>{dayjs(item.createdAt).fromNow()}</span>
-                        <span className='capitalize'><Tag color='orange'>{item.service}</Tag></span>
+                        <span className='capitalize'><Tag color='orange'>{item.type}</Tag></span>
                     </div>
                 </div>
               }

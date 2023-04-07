@@ -20,7 +20,7 @@ const ServiceSectionContent: ServiceCardProps[] =[
         href: '/services/hr'
     },
     {
-        title: 'e-Sport/Creative Design',
+        title: 'e-Sport',
         desc: 'Aryan International LLC provides high-quality education services that are designed to help you unlock your full potential. Our experienced teachers and tutors use innovative teaching methods to help you learn more effectively and achieve your goals.',
         icon: <FaBookReader/>,
         href: '/services/e-sport'
@@ -32,13 +32,13 @@ const ServiceSectionContent: ServiceCardProps[] =[
         href: '/services/education'
     },
     {
-        title: 'Web & Software Development',
+        title: 'Web & App Development',
         desc: `Aryan International LLC web development services can help you build a professional website that showcases your brand and helps you connect with your customers. Our team of experts will work with you to create a website that meets your needs and exceeds your expectations.`,
         icon: <MdWeb/>,
         href: '/services/web-development'
     },
     {
-        title: 'Entertainment Services',
+        title: 'Creative Design & Entertainment Services',
         desc: 'Aryan International LLC offers a wide range of entertainment services to help you relax, unwind, and have fun. From movies and TV shows to music and games, we’ve got you covered.',
         icon: <MdMovie/>,
         href: '/services/entertainment'
