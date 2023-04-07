@@ -47,7 +47,7 @@ const Nav = () => {
                 },
                 {
                     href: '/services/e-sport',
-                    lable: 'e-Sport & Creative Design'
+                    lable: 'E-Sports'
                 },
                 {
                     href: '/services/education',
@@ -55,11 +55,11 @@ const Nav = () => {
                 },
                 {
                     href: '/services/web-development',
-                    lable: 'Web Design & Development'
+                    lable: 'Web & App Development'
                 },
                 {
                     href: '/services/entertainment',
-                    lable: 'Digital Media & Entertainment'
+                    lable: 'Graphics & Media Services'
                 },
             ]
         },
@@ -67,10 +67,10 @@ const Nav = () => {
             href: '/jobs',
             lable: 'Jobs'
         },
-        {
-            href: '#',
-            lable: 'Blog'
-        },
+        // {
+        //     href: '#',
+        //     lable: 'Blog'
+        // },
         {
             href: '/contact',
             lable: 'Contact Us'

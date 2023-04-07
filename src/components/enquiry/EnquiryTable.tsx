@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { CompanyEnquiry, CompanyEnquiryType, type Enquiry } from '@prisma/client'
@@ -28,7 +30,10 @@ const extraC: {[key in CompanyEnquiryType]?: ColumnsType<CompanyEnquiry>} = {
     {
       key: 'enq_managment',
       title: 'Industries',
-      dataIndex: 'industry'
+      dataIndex: 'data',
+      render: (value) => {
+        return value.industry
+      }
     },
     
   ],
@@ -36,13 +41,30 @@ const extraC: {[key in CompanyEnquiryType]?: ColumnsType<CompanyEnquiry>} = {
     {
       key: 'enq_industry',
       title: 'Industries',
-      dataIndex: 'industry'
+      dataIndex: 'data',
+      render: (value) => {
+        return value.industry
+      }
     },
     {
       key: 'enq_job',
       title: 'Job Title',
-      dataIndex: 'jobName'
+      dataIndex: 'data',
+      render: (value) => {
+        return value.jobname
+      }
     },
+  ],
+  [CompanyEnquiryType.DESIGN]: [
+    {
+      key: 'enq_managment',
+      title: 'Industries',
+      dataIndex: 'data',
+      render: (value) => {
+        return value.service
+      }
+    },
+    
   ],
 
 }

@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import UserAvatar from './UserAvatar';
 import { FaGamepad } from 'react-icons/fa';
+import Logo from '../Logo';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -70,7 +71,7 @@ const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => 
     <Layout style={{ minHeight: '100vh' }}>
       <Sider className='hidden md:block' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className='text-xl font-semibold text-white p-3 flex justify-center'><Link className='text-white relative block w-full h-full' href={'/'}>
-          <Image src={'/assets/logo/sjts-log.png'} alt="logo" width={50} height={50} />
+        <Link href="/"><Logo/></Link>
         </Link></div>
         <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={getSelectedKeys()} mode="inline" items={items} onClick={(e) => handleOnMenuItemClick(e.key)} />
       </Sider>

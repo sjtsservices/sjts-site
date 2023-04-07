@@ -1,6 +1,7 @@
 import { Card } from 'antd'
 import { GameEventDemoData } from 'data/GameEventDemoData'
 import React from 'react'
+import { Element } from 'react-scroll'
 import OGAboutSection from '~/components/online-gaming/OGAboutSection'
 import OGCtaButton from '~/components/online-gaming/OGCtaButton'
 import OGEventGrid from '~/components/online-gaming/OGEventGrid'
@@ -27,9 +28,9 @@ const ESportPage = () => {
             <div className="mt-20">
               <div className="flex items-center justify-between mb-10">
                 <OGSectionTitle title="Our Events" />
-                <OGCtaButton>Browse More</OGCtaButton>
+                {/* <OGCtaButton>Browse More</OGCtaButton> */}
               </div>
-              <OGEventGrid events={GameEventDemoData} loading={false} />
+             <Element name="games"> <OGEventGrid events={GameEventDemoData} loading={false} /></Element>
             </div>
           </div>
       <div className="h-20"></div>

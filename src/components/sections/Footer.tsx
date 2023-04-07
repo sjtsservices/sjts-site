@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { Button } from 'antd'
 import { signIn, useSession } from 'next-auth/react'
@@ -7,11 +8,22 @@ import React from 'react'
 import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
 import Logo from '../Logo';
+import { DribbbleOutlined, FacebookOutlined, InstagramOutlined, LinkOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons';
+import { useSiteInfo } from '~/lib/hooks/useSiteInfo';
+
 
 export type FooterLinkListItem = {
   href: string,
   lable: string
 }
+
+export const nameIconMap: {[key:string]: any} = {
+  twitter: <TwitterOutlined/>,
+  facebook: <FacebookOutlined/>,
+  dribbble: <DribbbleOutlined/>,
+  instagram: <InstagramOutlined/>,
+  linkedin: <LinkedinOutlined/>
+} 
 
 const FooterLinkList = ({ list, title }: { list: FooterLinkListItem[], title: string }) => {
   return (
@@ -26,6 +38,17 @@ const FooterLinkList = ({ list, title }: { list: FooterLinkListItem[], title: st
       </ul>
     </div>
   )
+}
+
+const FooterIconList = () => {
+  const {info} = useSiteInfo();
+  return <div className='flex flex-wrap items-center'>
+      {
+        info && info.socialLinks.map(sl => {
+          return <a  href={sl.link} key={nanoid()}><Button type="link" size="large"  icon={nameIconMap[sl.name]||<LinkOutlined/>}></Button></a>
+        })
+      }
+  </div>
 }
 
 const Footer = () => {
@@ -52,16 +75,21 @@ const Footer = () => {
               { href: '/', lable: 'Home' },
               { href: '/contact', lable: 'Contact Us' },
               { href: '/jobs', lable: 'Jobs' }
+  
             ]} />
           </div>
           <div className="col-start-3 col-end-5 md:col-auto">
             <FooterLinkList title="Company" list={[
               { href: '/about', lable: 'About Us' },
               { href: '/team', lable: 'Our Team' },
+              { href: '/terms-condition', lable: 'Terms & Condition' },
+              { href: '/privacy-policy', lable: 'Privacy Policy' },
+
             ]} />
           </div>
 
           <div className="col-span-4 md:col-auto">
+            <div className="max-w-[200px]"><FooterIconList/></div>
             {
               AdminButton
             }

@@ -1,6 +1,7 @@
 import React from 'react'
 import HeroSection from '../HeroSection'
 import { Button } from 'antd'
+import ScrollTo from '../ScrollTo'
 
 const content = {
     image: '/assets/images/creative-design-hero.webp',
@@ -13,7 +14,7 @@ const CDHero = () => {
     <>
     <HeroSection {...content} 
             overlayColorClass='bg-gradient-to-r from-purple-700/60 to-indigo-900/60 ' 
-            action={<Button type="dashed" size='large'>Talk To Us</Button>} 
+            action={<ScrollTo name="cdcontact"><Button type="dashed" size='large'>Talk To Us</Button></ScrollTo>} 
             />
 
     </>

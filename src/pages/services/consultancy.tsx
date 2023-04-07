@@ -1,4 +1,5 @@
 import React from 'react'
+import { Element } from 'react-scroll'
 import ConAboutServices from '~/components/consultancy/ConAboutServices'
 import ConsEnquiryFormSection from '~/components/consultancy/ConsEnquiryFormSection'
 import ConsHero from '~/components/consultancy/ConsHero'
@@ -12,7 +13,8 @@ const ManagmentConsultanyPage = () => {
     <div className="mt-10"><ConsKeyPointGrid/></div>
     <div className="mt-20"><ConAboutServices/></div>
     <div className="mt-20"><ConsWhyChooseUs/></div>
-    <div className="mt-20"><ConsEnquiryFormSection/></div>
+    <Element name='cs_form'><div className="mt-20"><ConsEnquiryFormSection/></div></Element>
+    
     </>
   )
 }

@@ -3,20 +3,20 @@ import WhyChooseUsSection from '../sections/WhyChooseUsSection'
 
 const WhyChooseUsContent = [
     {
-        title: 'Attention to Detail',
-        desc: 'We pay close attention to every detail of your project, ensuring that the final product meets your exact specifications.'
+        title: 'Creative Design and Entertainment Experts',
+        desc: 'Our team of experts are passionate about their work and strive to deliver exceptional results every time.'
     },
     {
-        title: 'Cutting-Edge Technology',
-        desc: 'We use the latest software and technology to deliver high-quality results that meet industry standards.'
+        title: 'Customer-Focused Approach',
+        desc: 'We take a customer-focused approach to all our projects, ensuring that your unique needs and requirements are met.'
     },
     {
-        title: 'Quick Turnaround Time',
-        desc: `We understand the importance of delivering projects on time, which is why we have a fast turnaround time.`
+        title: 'Customized Solutions',
+        desc: `We understand that every project is unique and requires customized solutions. We work closely with our clients to deliver tailor-made solutions that meet their specific needs.`
     },
     {
-        title: 'Exceptional Customer Service',
-        desc: 'We believe in providing exceptional customer service, which is why we have a dedicated team of professionals to assist you with your queries and concerns.'
+        title: 'Affordable Prices',
+        desc: 'We believe in delivering exceptional value for money, which is why we offer our services at highly competitive prices.'
     },
     {
         title: 'Experienced Professionals',

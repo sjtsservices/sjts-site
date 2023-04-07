@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import Link from 'next/link';
 import React from 'react'
+import ScrollTo from '../ScrollTo';
 
 const HeroSection = () => {
     const heroImage = '/assets/images/hr-hero.jpg';
@@ -16,7 +17,7 @@ const HeroSection = () => {
                     <h1 className='text-5xl md:text-6xl serif  mb-3'><span className='text-primary'>The Right People</span><br></br> For your Team</h1>
                     <p className='text-base leading-tight'>{description}</p>
                     <div className="flex justify-start mt-8">
-                        <Link href="/contact"><Button size="large" type="primary">Raise A Query</Button></Link>
+                        <ScrollTo name="hr_form"><Button size="large" type="primary">Raise A Query</Button></ScrollTo>
                     </div>
                 </div>
             </div>

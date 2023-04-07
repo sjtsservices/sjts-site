@@ -33,14 +33,13 @@ const CDKeyPointCard = (props: {title: string, desc: string, index: number}) => 
 
 const CDKeyPoint = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-5 text-primary-dark'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-10 text-primary-dark'>
         <div className="">
             <SectionTitle title="Our Key Points" />
+            <p className='text-lg tracking-wider mt-5'>{`At Aryan International LLC, we stand out from the crowd with our exceptional services and commitment to delivering exceptional value to our clients. Some of our key points include:`}</p>
         </div>
 
         <div className=" col-auto md:col-start-2 md:col-end-4  ">
-            <p className='text-lg tracking-wider'>{`At Aryan International LLC, we stand out from the crowd with our exceptional services and commitment to delivering exceptional value to our clients. Some of our key points include:`}</p>
-
             <div className="mt-5 grid grid-cols-1 gap-5 justify-items-center md:grid-cols-2 xl:grid-cols-2">
                 {
                     content.map((val, index) => {

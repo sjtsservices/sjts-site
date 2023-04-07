@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import React from 'react'
 import {AiFillCheckCircle} from 'react-icons/ai'
 import SectionTitle from '../SectionTitle'
+import Link from 'next/link'
 
 const aboutUsContent = {
     sectionImage: '/assets/images/about-img.webp',
@@ -47,7 +48,9 @@ const AboutUsSection = () => {
                 })
             }
 
-            <div className="mt-5"><Button type='primary' size='large'>More About Us</Button></div>
+            <div className="mt-5">
+                <Link href={'/about'}><Button type='primary' size='large'>More About Us</Button></Link>
+            </div>
         </div>
     </div>
   )

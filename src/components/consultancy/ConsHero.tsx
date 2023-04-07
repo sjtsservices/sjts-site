@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import Link from 'next/link';
 import React from 'react'
+import ScrollTo from '../ScrollTo';
 
 const ConsHero = () => {
     const heroImage = '/assets/images/consultancy_hero.webp';
@@ -16,7 +17,7 @@ const ConsHero = () => {
                     <h1 className='text-5xl md:text-7xl serif  mb-3'>Transforming Businesses for<br></br><span className='text-primary'>SUCCESS</span></h1>
                     <p className='text-base leading-tight'>{description}</p>
                     <div className="flex justify-center mt-8">
-                        <Link href="/contact"><Button size="large" type="primary">Book Free Consultation</Button></Link>
+                        <ScrollTo name='cs_form'><Button size="large" type="primary">Book Free Consultation</Button></ScrollTo>
                     </div>
                 </div>
             </div>

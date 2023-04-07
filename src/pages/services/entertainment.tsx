@@ -1,4 +1,5 @@
 import React from 'react'
+import { Element } from 'react-scroll'
 import CommingSoon from '~/components/CommingSoon'
 import CDContact from '~/components/creative-design/CDContact'
 import CDHero from '~/components/creative-design/CDHero'
@@ -15,7 +16,7 @@ const Entertainment = () => {
       </div>
         <div className='mt-20'><CDWhyChooseUs /></div>
         <div className='mt-20 container mx-auto px-5'><CDKeyPoint /></div>
-        <div className='mt-20 container mx-auto px-5'><CDContact /></div>
+        <Element name="cdcontact"><div className='mt-20 container mx-auto px-5'><CDContact /></div></Element>
     </>
   )
 }

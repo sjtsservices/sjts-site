@@ -8,7 +8,8 @@ export type CompanyInfo = {
     address: string,
     city: string,
     state: string,
-    country: string
+    country: string,
+    socialLinks: {name: string, link: string}[]
 }
 
 export type SiteContextParams = {

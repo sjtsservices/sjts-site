@@ -8,7 +8,30 @@ const defaultCompanyInfo: CompanyInfo = {
     address: 'QQX5+4V6, New Jamdeeh Pandey Colony',
     city: 'Basti',
     state: 'Uttar Pradesh',
-    country: 'India'
+    country: 'India',
+    socialLinks: [
+        {
+            name: 'facebook',
+            link: '#'
+        },
+        {
+            name: 'twitter',
+            link: '#'
+        },
+        {
+            name: 'instagram',
+            link: '#'
+        },
+        {
+            name: 'linkedin',
+            link: '#'
+        },
+        {
+            name: 'dribbble',
+            link: '#'
+        },
+
+    ]
 }
 export function useSiteInfo(){
     const {info, setInfo} = useContext(SiteContext);

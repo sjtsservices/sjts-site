@@ -1,4 +1,5 @@
 import React from 'react'
+import { Element } from 'react-scroll'
 import HREnquirySection from '~/components/hr_solutions/HREnquirySection'
 import HRKeypoint from '~/components/hr_solutions/HRKeypoint'
 import HeroSection from '~/components/hr_solutions/HeroSection'
@@ -16,7 +17,7 @@ const HRPage = () => {
     <div className='mt-20'><Industries/></div>
     <div className='mt-20'><HrDivider/></div>
     <div className=''><HrWhyChooseUs/></div>
-    <div className='mt-20'><HREnquirySection/></div>
+    <Element name='hr_form'><div className='mt-20'><HREnquirySection/></div></Element>
     </>
   )
 }

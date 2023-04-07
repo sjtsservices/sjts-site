@@ -21,6 +21,11 @@ const EnquiriesTabs = () => {
           label: `HR Consultancy`,
           children: <EnquiriesLoader type={CompanyEnquiryType.HR}/>,
         },
+        {
+          key: CompanyEnquiryType.DESIGN,
+          label: `Grahic Design & Media`,
+          children: <EnquiriesLoader type={CompanyEnquiryType.DESIGN}/>,
+        },
         
       ];
   return (
