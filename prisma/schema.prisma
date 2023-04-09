@@ -190,22 +190,20 @@ enum CompanyEnquiryType {
     HR
     DEVELOPMENT
     DESIGN
+    EDUCATION
 }
 
 
 model SiteConfig {
     id String  @id @default(cuid())
-    email   String
+    email   String @unique
     phone   String?
     city    String?
     state   String?
     country String?
     address String?
     baseCur String? @default("USD")
+    socialLinks Json[] @default([])
+    extra   Json?
 }
 
-model Currency {
-    id String @id @default(cuid())
-    name    String
-    
-}

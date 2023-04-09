@@ -5,13 +5,18 @@ import { api } from '@/utils/api'
 import { CompanyEnquiry } from '@prisma/client';
 import { Button, Form, Input, Modal, message } from 'antd';
 import React, { PropsWithChildren } from 'react'
+import PhoneInput from '../inputs/PhoneInput';
 
 export type EnquiryFormProps = {
     onMutate?: (enquiry: CompanyEnquiry) => void,
-
+    submitText?: string
 }
 
-const EnquiryForm = ({ children, onMutate }: PropsWithChildren<EnquiryFormProps>) => {
+const EnquiryForm = ({ 
+    children, 
+    onMutate,
+    submitText="Submit"
+}: PropsWithChildren<EnquiryFormProps>) => {
     const [form] = Form.useForm();
     const createMutation = api.companyEnquiry.create.useMutation();
 
@@ -47,8 +52,9 @@ const EnquiryForm = ({ children, onMutate }: PropsWithChildren<EnquiryFormProps>
                 <Form.Item name={'email'} rules={[{ required: true, message: 'Email is required' }, { type: 'email', message: 'Enter valid email' }]}>
                     <Input placeholder='Email' />
                 </Form.Item>
-                <Form.Item name={'phone'} rules={[{ required: true, message: 'Phone is required' }]}>
-                    <Input placeholder='Phone' />
+                <Form.Item name={'phone'} >
+                    {/* <Input placeholder='Phone' /> */}
+                    <PhoneInput/>
                 </Form.Item>
                 {/* <Form.Item name={'data'} > */}
                     {
@@ -61,7 +67,7 @@ const EnquiryForm = ({ children, onMutate }: PropsWithChildren<EnquiryFormProps>
             </Form>
 
             <div className="flex">
-                <Button loading={createMutation.isLoading} disabled={createMutation.isLoading} type="primary" size='large' onClick={() => void sendRequest()}>Send Message</Button>
+                <Button loading={createMutation.isLoading} disabled={createMutation.isLoading} type="primary" size='large' onClick={() => void sendRequest()}>{submitText}</Button>
             </div>
         </div>
     )

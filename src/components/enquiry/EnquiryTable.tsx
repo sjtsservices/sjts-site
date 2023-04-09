@@ -66,6 +66,33 @@ const extraC: {[key in CompanyEnquiryType]?: ColumnsType<CompanyEnquiry>} = {
     },
     
   ],
+  [CompanyEnquiryType.EDUCATION]: [
+    {
+      key: 'enq_education',
+      title: 'Passport Country',
+      dataIndex: 'data',
+      render: (value) => {
+        return value.cop
+      }
+    },
+    {
+      key: 'enq_ccl',
+      title: 'Current Country Location',
+      dataIndex: 'data',
+      render: (value) => {
+        return value.ccl
+      }
+    },
+    {
+      key: 'enq_preferred',
+      title: 'Preferred Country',
+      dataIndex: 'data',
+      render: (value) => {
+        return value.preferredCountry
+      }
+    },
+    
+  ],
 
 }
 

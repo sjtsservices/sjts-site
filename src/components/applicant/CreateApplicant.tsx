@@ -14,6 +14,7 @@ import saveApplicationLocally from '@/helpers/handleSubmissionLocally'
 import { getJobSeeker, saveJobSeeker } from '@/helpers/handleJobseekerLocally'
 import CVUploaderInput from '../inputs/CVUploaderInput'
 import { TRPCClientError } from '@trpc/client'
+import PhoneInput from '../inputs/PhoneInput'
 
 export type HandleApplicantForm = {
     save: () => Promise<void>,
@@ -127,7 +128,7 @@ const CreateApplicant = React.forwardRef<HandleApplicantForm, MutateApplicantFor
                             <Input />
                         </Form.Item>
                         <Form.Item name="phone" label="Phone" rules={[{ required: true, message: 'Phone is required' }]}>
-                            <Input />
+                            <PhoneInput/>
                         </Form.Item>
                         <Form.Item name="cvUrl" label="CV Url">
                             <Input />

@@ -3,7 +3,7 @@ import { WithPagination } from './schema-helpers/WithPagination';
 import { z } from "zod";
 import { WithInfinitePagination } from './schema-helpers/WithInfinitePaginaion';
 
-const CompanyEnquiryTypeEnum = z.enum(['GENERAL','MANAGMENT','HR','DEVELOPMENT','DESIGN']);
+const CompanyEnquiryTypeEnum = z.enum(['GENERAL','MANAGMENT','HR','DEVELOPMENT','DESIGN', 'EDUCATION']);
 
 
 export const CompanyEnquiryFilterSchema = z.object({
@@ -16,7 +16,7 @@ export const CreateCompanyEnquiry = z.object({
     phone: z.string(),
     message: z.string(),
     data: z.any(),
-    type: CompanyEnquiryTypeEnum.default('GENERAL')
+    type: CompanyEnquiryTypeEnum.optional().default('GENERAL')
 })
 
 export const UpdateCompanyEnquiry = z.object({
