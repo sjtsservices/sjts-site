@@ -4,6 +4,15 @@ import KeyPointSection from '~/components/sections/KeyPointSection'
 import MissionVisionSection from '~/components/sections/MissionVisionSection'
 import OurTeamSection from '~/components/sections/OurTeamSection'
 
+
+export function getStaticProps() {
+  return {
+    props: {
+
+    }
+  }
+}
+
 const TeamPage = () => {
   return (
     <>

@@ -6,6 +6,14 @@ import ConsHero from '~/components/consultancy/ConsHero'
 import ConsKeyPointGrid from '~/components/consultancy/ConsKeyPointGrid'
 import ConsWhyChooseUs from '~/components/consultancy/ConsWhyChooseUs'
 
+export function getStaticProps() {
+  return {
+    props: {
+
+    }
+  }
+}
+
 const ManagmentConsultanyPage = () => {
   return (
     <>

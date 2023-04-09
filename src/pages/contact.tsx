@@ -8,6 +8,15 @@ import ContactInfoSection from '~/components/sections/ContactInfoSection'
 import MissionVisionSection from '~/components/sections/MissionVisionSection'
 
 
+export function getStaticProps() {
+    return {
+      props: {
+  
+      }
+    }
+  }
+
+
 
 const Contact = () => {
     return (

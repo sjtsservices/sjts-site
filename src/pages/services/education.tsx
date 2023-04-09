@@ -6,6 +6,14 @@ import EDHeroSection from '~/components/education/EDHeroSection'
 import EDServices from '~/components/education/EDServices'
 import EDWhyChooseUs from '~/components/education/EDWhyChooseUs'
 
+export function getStaticProps() {
+  return {
+    props: {
+
+    }
+  }
+}
+
 const EducationPage = () => {
   return (
     <>

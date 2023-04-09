@@ -8,6 +8,15 @@ import HrServiceDescription from '~/components/hr_solutions/HrServiceDescription
 import HrWhyChooseUs from '~/components/hr_solutions/HrWhyChooseUs'
 import Industries from '~/components/hr_solutions/Industries'
 
+
+export function getStaticProps() {
+  return {
+    props: {
+
+    }
+  }
+}
+
 const HRPage = () => {
   return (
     <>

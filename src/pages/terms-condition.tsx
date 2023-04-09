@@ -2,6 +2,15 @@ import { Card } from 'antd'
 import React from 'react'
 import PageHeader from '~/components/PageHeader'
 
+
+export function getStaticProps() {
+    return {
+      props: {
+  
+      }
+    }
+  }
+
 const TermsAndCondition = () => {
     return (
         <>

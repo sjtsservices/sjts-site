@@ -7,6 +7,14 @@ import CDKeyPoint from '~/components/creative-design/CDKeyPoint'
 import CDServices from '~/components/creative-design/CDServices'
 import CDWhyChooseUs from '~/components/creative-design/CDWhyChooseUs'
 
+export function getStaticProps() {
+  return {
+    props: {
+
+    }
+  }
+}
+
 const Entertainment = () => {
   return (
     <>

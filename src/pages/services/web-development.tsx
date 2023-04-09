@@ -5,6 +5,14 @@ import WebdHeroSection from '~/components/web_dev_service/WebdHeroSection'
 import WebdKeyPointSection from '~/components/web_dev_service/WebdKeyPointSection'
 import WebdWhyChooseUs from '~/components/web_dev_service/WebdWhyChooseUse'
 
+export function getStaticProps() {
+    return {
+      props: {
+  
+      }
+    }
+  }
+
 const WebDevelopmentPage = () => {
     return (
         <>
