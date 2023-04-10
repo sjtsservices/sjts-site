@@ -1,5 +1,7 @@
+import Head from 'next/head';
 import React from 'react'
 import { TbTargetArrow } from 'react-icons/tb';
+import MetaTags from '~/components/MetaTags';
 import PageHeader from '~/components/PageHeader'
 import AboutUsSection from '~/components/sections/AboutUsSection'
 import KeyPointSection from '~/components/sections/KeyPointSection'
@@ -26,6 +28,14 @@ const MVSection = ({ title, desc, isHighLight = false }: { title: string, desc: 
 const AboutPage = () => {
     return (
         <>
+
+            <Head>
+                <MetaTags
+                    title="About Us - Innovative Solutions for Your Business | Aryan Intl"
+                    desc="Learn more about our company and how we provide innovative solutions for your business needs. We offer a range of services including management consulting, HR consulting, web and mobile app development, and more. Contact us today to see how we can help your business grow."
+                    image="/assets/images/pages/aryanintl-about.webp"
+                />
+            </Head>
             <PageHeader title='About Us' />
             <div className="container pt-20 px-5 mx-auto">
                 <KeyPointSection />

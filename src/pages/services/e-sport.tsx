@@ -1,11 +1,10 @@
-import { Card } from 'antd'
 import { GameEventDemoData } from 'data/GameEventDemoData'
+import Head from 'next/head';
 import React from 'react'
 import { Element } from 'react-scroll'
+import MetaTags from '~/components/MetaTags'
 import OGAboutSection from '~/components/online-gaming/OGAboutSection'
-import OGCtaButton from '~/components/online-gaming/OGCtaButton'
 import OGEventGrid from '~/components/online-gaming/OGEventGrid'
-import OGGameEvents from '~/components/online-gaming/OGGameEvents'
 import OGHeroSection from '~/components/online-gaming/OGHeroSection'
 import OGHowItWorks from '~/components/online-gaming/OGHowItWorks'
 import OGSectionTitle from '~/components/online-gaming/OGSectionTitle'
@@ -16,6 +15,13 @@ const ESportPage = () => {
   return (
     // <div><CommingSoon/></div>
     <>
+    <Head>
+      <MetaTags 
+      title="E-Sport Competition | Join Our Online Game Events | Aryan Intl"
+      desc="Take part in our exciting online game events and compete with other gamers from around the world. Win big prizes and show off your skills in our E-Sport competitions. Join now and experience the thrill of competitive gaming with Aryan Intl."
+      image = "/assets/images/pages/aryanintl-esport.webp"
+      />
+    </Head>
       <OGHeroSection />
       <div className="bg-primary-dark relative bg-center   " style={{ backgroundImage: `url(/assets/images/gaming-bg-pattern.png)` }}>
         <div className=' px-5 w-full bg-primary-dark/80 '>

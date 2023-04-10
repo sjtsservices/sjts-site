@@ -31,7 +31,7 @@ const content = [
 
 const ReasonCard = ({ title, desc, icon }: { title: string, desc: string, icon: any }) => {
     return (
-        <div className='max-w-md w-full rounded-xl bg-orange-500 p-3 text-primary-dark'>
+        <div className='max-w-md w-full rounded-xl bg-gradient-to-b from-orange-500/80 to-orange-500 p-3 text-primary-dark shadow shadow-black/40'>
             <div className="flex items-center justify-center mb-3">
                 <span className="inline-block text-8xl text-primary-dark">{icon}</span>
             </div>
@@ -49,9 +49,9 @@ const EDWhyChooseUs = () => {
         <div className='py-20  bg-gradient-to-r from-[#120d50] to-[#0a0185]'>
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2">
                 <div className="flex items-center justify-center pb-20">
-                    <div >
-                        <div className='text-white font-bold text-5xl md:text-7xl'>WHY</div>
-                        <div className='text-white font-bold text-6xl md:text-9xl'>ARYAN Int.</div>
+                    <div className=''>
+                        <p className='drop-shadow font-bold text-5xl md:text-7xl bg-gradient-to-tr from-white to-slate-400 bg-clip-text text-transparent'>WHY</p>
+                        <p className=' drop-shadow font-bold text-6xl md:text-9xl bg-gradient-to-tr from-white to-slate-400 bg-clip-text text-transparent'>ARYAN Int.</p>
                     </div>
                 </div>
 
