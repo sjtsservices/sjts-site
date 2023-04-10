@@ -4,7 +4,7 @@ import { MdCall, MdEmail, MdLocationPin } from 'react-icons/md'
 const content = {
     address: 'QQX5+4V6, New Jamdeeh Pandey Colony, Basti, Uttar Pradesh',
     phone: '+91 7007628038',
-    email: 'support@sjts.com'
+    email: 'info@aryanintl.com'
 }
 
 
