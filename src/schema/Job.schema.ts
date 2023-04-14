@@ -23,7 +23,7 @@ export const CreateJobSchema = z.object({
     expiredAt: z.date().optional().nullable(),
     start_salary: z.number().optional().nullable(),
     max_salary: z.number().optional().nullable(),
-    experience: z.number().default(0),
+    experience: z.number().default(0).optional(),
     rate: SalaryRateEnum,
     type: JobTypeEnum,
     jobCountry: z.string(),

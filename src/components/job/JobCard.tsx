@@ -27,7 +27,7 @@ const JobCard = ({ job, notApplicable=false, savedSeeker, adminMode}: JobCardPro
 
 
   return (
-    <Card className='max-w-md w-full shadow border border-solid border-transparent hover:border-primary transition-all'>
+    <Card className='max-w-md w-full relative shadow border border-solid border-transparent hover:border-primary transition-all '>
       <div className='mb-5'>
         <JobAvatar image={job.thumbnail} />
       </div>
@@ -56,7 +56,7 @@ const JobCard = ({ job, notApplicable=false, savedSeeker, adminMode}: JobCardPro
           <Space className='mt-2' size={[0, 8]} wrap>
             {
               job.skills.map((skill: any) => {
-                return <Tag key={nanoid()} color="orange">{skill.skill}</Tag>
+                return <Tag key={nanoid()} className='break-words' color="orange">{skill.skill}</Tag>
               })
             }
           </Space>
@@ -64,10 +64,13 @@ const JobCard = ({ job, notApplicable=false, savedSeeker, adminMode}: JobCardPro
 
         {
           !notApplicable && 
-          <div className='flex items-center mt-5'>
+          <>
+          <div className="py-5"></div>
+          <div className=' mt-5 absolute bottom-5 left-0 w-full px-5'>
             {/* <Button disabled={checkIsAlreadyApplied()} type="primary" size='large' >Apply</Button> */}
-            <ApplyModal jobId={job.id} />
+            <ApplyModal jobId={job.id} ><Button block type='primary'>Apply</Button></ApplyModal>
           </div>
+          </>
         }
       </div>
     </Card>

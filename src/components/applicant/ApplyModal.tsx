@@ -1,7 +1,7 @@
-import { JobSeeker } from '@prisma/client';
-import { Button, Card, Modal } from 'antd';
-import React, { PropsWithChildren, useRef, useState } from 'react'
-import CreateApplicant, { HandleApplicantForm } from './CreateApplicant';
+import { type JobSeeker } from '@prisma/client';
+import { Button,Modal } from 'antd';
+import React, { type PropsWithChildren, useRef, useState } from 'react'
+import CreateApplicant, { type HandleApplicantForm } from './CreateApplicant';
 
 export type ApplyModalProps = {
     disabled?: boolean,
@@ -30,9 +30,11 @@ const ApplyModal = ({children, disabled, jobId, afterApplied}: PropsWithChildren
 
     return (
         <>
-            <Button type="primary" size="large" onClick={showModal} disabled={disabled}>
+            {
+                children ? <span onClick={showModal} className='block '>{children}</span>: <Button type="primary" size="large" onClick={showModal} disabled={disabled}>
                 Apply
             </Button>
+            }
             <Modal title="Apply for job" open={isModalOpen} okText="Submit" onOk={handleOk} onCancel={handleCancel}>
                 <CreateApplicant ref={formRef} jobId={jobId} onMutate={afterApplied}/>
             </Modal>

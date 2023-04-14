@@ -76,7 +76,7 @@ export const JobRouter = createTRPCRouter({
                 };
             }, Prisma.JobFindManyArgs>(ctx.prisma.job, {
             
-                orderBy: input.sort ? {[input.sort.sortBy]: input.sort.sortOrder} : {createdAt: 'asc'},
+                orderBy: input.sort ? {[input.sort.sortBy]: input.sort.sortOrder} : {createdAt: 'desc'},
                 include: {
                    _count: {
                     select: {
