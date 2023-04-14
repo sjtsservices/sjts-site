@@ -45,7 +45,8 @@ const FooterIconList = () => {
   return <div className='flex flex-wrap items-center'>
       {
         info && info.socialLinks.map(sl => {
-          return <a  href={sl.link} key={nanoid()}><Button type="link" size="large"  icon={nameIconMap[sl.name]||<LinkOutlined/>}></Button></a>
+          const sLink = sl as {name: string, link: string};
+          return sl && sl !== null ?<a  href={sLink.link} key={nanoid()}><Button type="link" size="large"  icon={nameIconMap[sLink.name]||<LinkOutlined/>}></Button></a>: undefined
         })
       }
   </div>

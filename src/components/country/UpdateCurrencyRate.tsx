@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from '@/utils/api'
@@ -45,11 +46,11 @@ const UpdateCurrencyRate = () => {
             setLoading(true);
             const newInfo = JSON.parse(JSON.stringify(info)) as SiteConfig;
             newInfo.baseCur = baseCur;
-            const res = await updateSettingMutation.mutateAsync(convertNullToUndefined<any>(newInfo));
+            const res = await updateSettingMutation.mutateAsync(convertNullToUndefined(newInfo));
             if(res){
                 await updateRates(res.baseCur === null ? undefined : res.baseCur);
-                setInfo?.(res)
-            };
+                setInfo?.(res);
+            }
             void message.success("Currency refresh successfully!");
             setLoading(false);
         } catch (error) {
