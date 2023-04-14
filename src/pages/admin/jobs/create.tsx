@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { api } from '@/utils/api'
 import { CheckOutlined, TableOutlined } from '@ant-design/icons'
+import { Job } from '@prisma/client'
 import { Button } from 'antd'
 import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 import StickyBox from 'react-sticky-box'
 import AdminPageHeader from '~/components/dashboard/AdminPageHeader'
 import MutateJobForm, { type HandleMutateJobForm } from '~/components/job/MutateJobForm'
+import ToggleJobStatus from '~/components/job/ToggleJobStatus'
 
 const CreateJobPage = () => {
     const [changed, setChanged] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [recentCreatedJob, setRecentCreatedJob] = useState<Job>();
     const mutateJobFormRef = useRef<HandleMutateJobForm>(null);
 
     const handleSave = () => {

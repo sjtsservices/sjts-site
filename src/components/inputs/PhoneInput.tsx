@@ -17,7 +17,7 @@ const PhoneInput = ({ value, onChange }: PhoneInputProps) => {
 
     return (
         <PI
-            country={'in'}
+            country={'us'}
             value={value}
             onChange={phone => onChange?.(phone)}
             inputStyle={{width: '100%'}}

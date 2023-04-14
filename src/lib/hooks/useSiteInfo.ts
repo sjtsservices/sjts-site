@@ -1,14 +1,17 @@
 import { useContext, useEffect } from 'react';
-import { CompanyInfo, SiteContext } from '../providers/SiteProvider';
+import {  SiteContext } from '../providers/SiteProvider';
+import { SiteConfig } from '@prisma/client';
 
-const defaultCompanyInfo: CompanyInfo = {
-    name: 'Aryan International LLC',
+const defaultCompanyInfo = {
+
     email: 'support@aryaninternational.com',
     phone: '7007628038',
     address: 'QQX5+4V6, New Jamdeeh Pandey Colony',
     city: 'Basti',
     state: 'Uttar Pradesh',
     country: 'India',
+    baseCur: 'INR',
+
     socialLinks: [
         {
             name: 'facebook',
@@ -36,9 +39,9 @@ const defaultCompanyInfo: CompanyInfo = {
 export function useSiteInfo(){
     const {info, setInfo} = useContext(SiteContext);
 
-    useEffect(() => {
-      if(!info) setInfo?.(defaultCompanyInfo);
-    }, [])
+    // useEffect(() => {
+    //   if(!info) setInfo?.(defaultCompanyInfo);
+    // }, [])
     
 
     return {

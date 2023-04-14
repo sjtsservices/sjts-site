@@ -6,6 +6,8 @@ import { exampleRouter } from "~/server/api/routers/example";
 import { ApplicationRouter } from './routers/application.router';
 import { CompanyEnquiryRouter } from './routers/companyenquiry.router';
 import { GameEventRouter } from './routers/gameEvent.router';
+import { SettingRouter } from './routers/setting.route';
+import { CountryRouter } from './routers/country.router';
 
 /**
  * This is the primary router for your server.
@@ -19,7 +21,9 @@ export const appRouter = createTRPCRouter({
   application: ApplicationRouter,
   enquiry: EnquiryRouter,
   companyEnquiry: CompanyEnquiryRouter,
-  gameEvent: GameEventRouter
+  gameEvent: GameEventRouter,
+  setting: SettingRouter,
+  country: CountryRouter
 });
 
 // export type definition of API

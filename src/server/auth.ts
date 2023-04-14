@@ -11,6 +11,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 import EmailProvider from "next-auth/providers/email";
+import { Roles } from "@prisma/client";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -23,7 +24,7 @@ declare module "next-auth" {
     user: {
       id: string;
       // ...other properties
-      // role: UserRole;
+      role: Roles;
     } & DefaultSession["user"];
   }
 
@@ -41,19 +42,40 @@ declare module "next-auth" {
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
+      // console.log("session in callback::", user)
       if (session.user) {
         session.user.id = user.id;
         // session.user.role = user.role; <-- put other properties on the session here
       }
       return session;
     },
+    async signIn(params) {
+      // console.log("Sign in callback::", params)
+      try {
+        // console.log("Sign in callback::", params.user.id)
+        const usersCount = await prisma.user.count();
+        if(usersCount > 1) return true;
+       
+        const nu = await prisma.user.update({
+          where: {
+            id: params.user.id
+          },
+          data: {
+            role: Roles.ADMIN
+          }
+        })
+      } catch (error) {
+        console.error(error)
+      }
+      return true;
+    },
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    // DiscordProvider({
-    //   clientId: env.DISCORD_CLIENT_ID,
-    //   clientSecret: env.DISCORD_CLIENT_SECRET,
-    // }),
+    DiscordProvider({
+      clientId: env.DISCORD_CLIENT_ID,
+      clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
     EmailProvider({
       server: {
         host: process.env.EMAIL_SERVER_HOST,

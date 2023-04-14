@@ -3,7 +3,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select, Space } from 'antd';
 
 const onFinish = (values: any) => {
-    console.log('Received values of form:', values);
+    // console.log('Received values of form:', values);
 };
 
 const JobSkillInput = () => {

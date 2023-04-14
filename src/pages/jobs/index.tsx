@@ -1,9 +1,6 @@
+/* eslint-disable @typescript-eslint/require-await */
 import dynamic from 'next/dynamic';
-import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import React from 'react'
-import { createInnerTRPCContext } from '@/server/api/trpc';
-import { appRouter } from '@/server/api/root';
-import superjson from 'superjson';
 import { api } from '@/utils/api';
 
 
@@ -11,8 +8,6 @@ import { api } from '@/utils/api';
 // import JobGrid from '~/components/job/JobGrid';
 import PageHeader from '~/components/PageHeader';
 import { Card, Skeleton } from 'antd';
-import { type GetServerSidePropsContext } from 'next';
-import { getServerAuthSession } from "~/server/auth";
 import { nanoid } from 'nanoid';
 // import JobGrid from '~/components/job/JobGrid';
 
@@ -36,26 +31,24 @@ const JobGrid = dynamic(
 
 
 
-export async function getServerSideProps(
-    context: GetServerSidePropsContext<{ id: string }>,
-  ) {
-    const ssg = createProxySSGHelpers({
-      router: appRouter,
-      ctx: createInnerTRPCContext({session: await getServerAuthSession({req: context.req, res: context.res})}),
-      transformer: superjson,
-    });
+export async function getServerSideProps() {
+    // const ssg = createProxySSGHelpers({
+    //   router: appRouter,
+    //   ctx: createInnerTRPCContext({session: null}),
+    //   transformer: superjson,
+    // });
   
-    void await ssg.jobs.list.prefetch({});
+    // void await ssg.jobs.list.prefetch({});
   
-    /* 
-     * Prefetching the `post.byId` query here.
-     * `prefetch` does not return the result and never throws - if you need that behavior, use `fetch` instead.
-     */
-    // await ssg.post.byId.prefetch({ id });
+    // /* 
+    //  * Prefetching the `post.byId` query here.
+    //  * `prefetch` does not return the result and never throws - if you need that behavior, use `fetch` instead.
+    //  */
+    // // await ssg.post.byId.prefetch({ id });
   
     return {
       props: {
-        trpcState: ssg.dehydrate(),
+        
       },
     };
   }
@@ -99,7 +92,7 @@ const JobsPage = () => {
             }
             {
                 (jobs && jobs.data.length > 0) && 
-                <div className='mt-10'>
+                <div className='my-10'>
                 <JobGrid jobs={jobs.data} />
             </div>
             }

@@ -53,6 +53,7 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
+    role          Roles     @default(USER)
     accounts      Account[]
     sessions      Session[]
 }
@@ -63,6 +64,12 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+enum Roles {
+    USER
+    ADMIN
+    MANAGER
 }
 
 model Job {
@@ -81,6 +88,10 @@ model Job {
     createdAt    DateTime       @default(now())
     updatedAt    DateTime       @updatedAt
     applications Applications[]
+    jobCountry   String
+    jobState     String?
+    jobCity      String?
+    published    Boolean        @default(false)
 }
 
 enum JobType {
@@ -193,17 +204,26 @@ enum CompanyEnquiryType {
     EDUCATION
 }
 
-
 model SiteConfig {
-    id String  @id @default(cuid())
-    email   String @unique
-    phone   String?
-    city    String?
-    state   String?
-    country String?
-    address String?
-    baseCur String? @default("USD")
-    socialLinks Json[] @default([])
-    extra   Json?
+    id          String  @id @default(cuid())
+    email       String  @unique
+    phone       String?
+    city        String?
+    state       String?
+    country     String?
+    address     String?
+    baseCur     String? @default("USD")
+    socialLinks Json[]  @default([])
+    extra       Json?
 }
 
+model Country {
+    id        Int    @id @default(autoincrement())
+    name      String
+    alpha2    String @unique()
+    alpha3    String @unique()
+    curCode   String
+    base      String
+    rate      String
+    curSymbol String
+}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -5,16 +6,19 @@ import { GameEventType } from '@/schema/GameEvent.schema';
 import { api } from '@/utils/api';
 import { convertNullToUndefined } from '@/utils/convertNullToUndefiend';
 import { GameEvent } from '@prisma/client';
-import { Button, Form, Input, Modal, message } from 'antd';
+import { Button, DatePicker, Form, Input, Modal, message } from 'antd';
 import dayjs from 'dayjs';
 import React, { PropsWithChildren, useEffect, useState } from 'react'
+import CurrencyInput from '../inputs/CurrencyInput';
+import { PlusOutlined } from '@ant-design/icons';
 
 export type EnquiryFormProps = {
     onMutate?: (event: GameEventType) => void,
-    data?: GameEventType
+    data?: GameEventType,
+    trigger?: React.ReactElement
 }
 
-const OGMutateModal = ({ onMutate, data }: EnquiryFormProps) => {
+const OGMutateModal = ({ onMutate, data, trigger }: EnquiryFormProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm<any>();
     const createMutation = api.gameEvent.create.useMutation();
@@ -47,7 +51,9 @@ const OGMutateModal = ({ onMutate, data }: EnquiryFormProps) => {
     };
 
     const handleOk = () => {
-        setIsModalOpen(false);
+        void sendRequest().then(() => {
+            setIsModalOpen(false);
+        })
     };
 
     const handleCancel = () => {
@@ -67,10 +73,10 @@ const OGMutateModal = ({ onMutate, data }: EnquiryFormProps) => {
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Open Modal
-            </Button>
-            <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            {
+                trigger ? <span onClick={showModal}>{trigger}</span> : <Button onClick={showModal} icon={<PlusOutlined/>}> Event</Button>
+            }
+            <Modal title={data ? 'Update Event' : 'Create Event'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} confirmLoading={createMutation.isLoading || updateMutation.isLoading}>
                 <Form
                     layout='vertical'
                     form={form}
@@ -86,8 +92,11 @@ const OGMutateModal = ({ onMutate, data }: EnquiryFormProps) => {
                     <Form.Item name="link" label="Event Link" rules={[{ required: true, message: 'Missing Event Link' }]}>
                         <Input />
                     </Form.Item>
-                    <Form.Item name="summary" label="Job Summary">
-                        <Input.TextArea rows={5} />
+                    <Form.Item name="prize" label="Prize" >
+                        <CurrencyInput/>
+                    </Form.Item>
+                    <Form.Item name="expiredAt" label="Registration Closed On" rules={[{ required: true, message: 'Missing Event Last Registration Date' }]}>
+                        <DatePicker showTime={true} showSecond={false}/>
                     </Form.Item>
                 </Form>
             </Modal>

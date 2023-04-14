@@ -82,7 +82,7 @@ export const GameEventRouter = createTRPCRouter({
                 where: {
                     expiredAt: type === 'ONLY_OPENED'? {gt: new Date()} : undefined
                 },
-                orderBy: input.sort ? {[input.sort.sortBy]: input.sort.sortOrder} : {createdAt: 'asc'},
+                orderBy: input.sort ? {[input.sort.sortBy]: input.sort.sortOrder} : {createdAt: 'desc'},
                 include: {
                     Game: true
                 }

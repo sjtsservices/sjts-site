@@ -2,7 +2,7 @@
 import React, { type PropsWithChildren, useState } from 'react';
 import {
   ControlOutlined,
-  DashboardOutlined, FormOutlined, MenuOutlined, ReconciliationOutlined,
+  DashboardOutlined, FormOutlined, MenuOutlined, ReconciliationOutlined, SettingOutlined,
 } from '@ant-design/icons';
 import { Button, Drawer, type MenuProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
@@ -36,6 +36,7 @@ const items: MenuItem[] = [
   getItem('Jobs', '/admin/jobs', <ReconciliationOutlined />),
   getItem('Enquiry', '/admin/enquiry', <FormOutlined />),
   getItem('Game Event', '/admin/game-events', <span className='antdicon'><FaGamepad/></span>),
+  getItem('Settings', '/admin/setting', <SettingOutlined/>),
   //   getItem('Clients', '/dashboard/clients', <BuildOutlined />),
   //   getItem('Contacts', '/dashboard/contacts', <ContactsOutlined />),
   //   getItem('Projects', '/dashboard/projects', <FolderOpenOutlined />),
@@ -71,7 +72,7 @@ const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => 
     <Layout style={{ minHeight: '100vh' }}>
       <Sider className='hidden md:block' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className='text-xl font-semibold text-white p-3 flex justify-center'><Link className='text-white relative block w-full h-full' href={'/'}>
-        <Link href="/"><Logo/></Link>
+        <Logo/>
         </Link></div>
         <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={getSelectedKeys()} mode="inline" items={items} onClick={(e) => handleOnMenuItemClick(e.key)} />
       </Sider>

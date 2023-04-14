@@ -1,7 +1,6 @@
 const defaultSiteConfig = {
-    name: 'Aryan International LLC',
-    email: 'support@aryaninternational.com',
-    phone: '7007628038',
+    email: 'info@aryaninternational.com',
+    phone: '+91 7007628038',
     address: 'QQX5+4V6, New Jamdeeh Pandey Colony',
     city: 'Basti',
     state: 'Uttar Pradesh',

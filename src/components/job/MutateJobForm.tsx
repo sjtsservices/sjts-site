@@ -4,12 +4,18 @@
 import { type JobListItem } from '@/schema/Job.schema'
 import { type Job } from '@prisma/client'
 import { api } from '@/utils/api'
-import { Card, DatePicker, Form, Input, InputNumber, message, Select } from 'antd'
+import { Card, DatePicker, Divider, Form, Input, InputNumber, message, Select } from 'antd'
 import React, { useEffect, useImperativeHandle } from 'react'
 
 import Editor from '~/components/Editor'
 import JobSkillInput from '~/components/job/JobSkillInput'
 import dayjs from 'dayjs'
+import { useAddress } from '~/lib/hooks/useAddress'
+import country from 'country-state-city/lib/country'
+import state from 'country-state-city/lib/state'
+import CitySelectorInput from '../inputs/CitySelectorInput'
+import CountrySelectoInput from '../inputs/CountrySlectorInput'
+import StateInput from '../inputs/StateSelectorInput'
 
 export type HandleMutateJobForm = {
   save: () => Promise<void>,
@@ -27,11 +33,12 @@ const MutateJobForm = React.forwardRef<HandleMutateJobForm, MutateJobFormProps>(
   const [form] = Form.useForm();
   const createJobMutation = api.jobs.create.useMutation();
   const updateJobMutation = api.jobs.update.useMutation();
+  const { country, state, setCountry, setState } = useAddress({ country: 'india' });
 
   const save = async () => {
     try {
       const validatedData = await form.validateFields();
-      const expiredAt = validatedData.expiredAt && dayjs(validatedData.expiredAt).toDate() 
+      const expiredAt = validatedData.expiredAt && dayjs(validatedData.expiredAt).toDate()
       if (props.data) {
         const res = await updateJobMutation.mutateAsync({ ...validatedData, expiredAt });
         void message.success('Updated Successfully');
@@ -65,9 +72,9 @@ const MutateJobForm = React.forwardRef<HandleMutateJobForm, MutateJobFormProps>(
 
   useEffect(() => {
     if (props.data) {
-      if(props.data.expiredAt){
-        form.setFieldsValue({...props.data, expiredAt: dayjs(props.data.expiredAt)})
-      }else{
+      if (props.data.expiredAt) {
+        form.setFieldsValue({ ...props.data, expiredAt: dayjs(props.data.expiredAt) })
+      } else {
         form.setFieldsValue(props.data)
       }
     }
@@ -110,10 +117,10 @@ const MutateJobForm = React.forwardRef<HandleMutateJobForm, MutateJobFormProps>(
             </Form.Item>
             <div className="grid grid-cols-2 gap-5">
               <Form.Item name="start_salary" label="Start Salary">
-                <InputNumber addonBefore={<span>&#x20b9;</span>} min={0} style={{width: '100%'}}/>
+                <InputNumber addonBefore={<span>&#x20b9;</span>} min={0} style={{ width: '100%' }} />
               </Form.Item>
               <Form.Item name="max_salary" label="Max Salary">
-                <InputNumber addonBefore={<span>&#x20b9;</span>} min={0} style={{width: '100%'}} />
+                <InputNumber addonBefore={<span>&#x20b9;</span>} min={0} style={{ width: '100%' }} />
               </Form.Item>
             </div>
             <Form.Item name="rate" initialValue={'MONTH'} label="Rate">
@@ -127,10 +134,21 @@ const MutateJobForm = React.forwardRef<HandleMutateJobForm, MutateJobFormProps>(
               <InputNumber min={0} addonAfter="Years" />
             </Form.Item>
             <Form.Item name="expiredAt" label="Expired At">
-              <DatePicker onSelect={() => props.onChange?.(form.getFieldsValue())}/>
+              <DatePicker onSelect={() => props.onChange?.(form.getFieldsValue())} />
             </Form.Item>
 
-            <Form.Item name="skills" label="Job Summary">
+            <Divider>Location</Divider>
+            <Form.Item name="jobCountry" label="Country" initialValue={'india'} rules={[{ required: true, message: 'Country is required' }]}>
+              <CountrySelectoInput onCountrySelect={setCountry} />
+            </Form.Item>
+            <Form.Item name="jobState" label="State" rules={[{ required: true, message: 'State is required' }]}>
+              <StateInput onStateSelect={setState} countryCode={country?.isoCode} />
+            </Form.Item>
+            <Form.Item name="jobCity" label="City" >
+              <CitySelectorInput stateCode={state?.isoCode} countryCode={country?.isoCode} />
+            </Form.Item>
+
+            <Form.Item name="skills" label="Job Skills">
               <JobSkillInput />
             </Form.Item>
           </Card>

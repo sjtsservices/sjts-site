@@ -7,8 +7,10 @@ import React from 'react'
 import AppTable, { type AppTableProps } from '../dashboard/AppTable'
 import { type GameEventType } from '@/schema/GameEvent.schema';
 import { Currency } from '@/utils/currency';
-import { Tag } from 'antd';
+import { Button, Tag } from 'antd';
 import DeleteGameEvent from './OGDeleteButton';
+import OGMutateModal from './OGMutateModal';
+import { EditOutlined } from '@ant-design/icons';
 
 
 export type EnquiryTableProps = {
@@ -48,7 +50,7 @@ const OGTable = ({data,onDelete, ...rest}: EnquiryTableProps) => {
           title: 'Expired',
           dataIndex: 'expiredAt',
           render: (value: Date, root) => {
-            return dayjs(value).isAfter(Date.now()) ? <Tag color="orange">Expired</Tag>:<Tag color="green">Opened</Tag>
+            return dayjs(value).isBefore(Date.now()) ? <Tag color="orange">Expired</Tag>:<Tag color="green">Opened</Tag>
           }
         },
         {
@@ -71,7 +73,10 @@ const OGTable = ({data,onDelete, ...rest}: EnquiryTableProps) => {
           key: 'enq_action',
           title: 'Action',
           render: (value: any, root) => {
-            return <div className='flex items-center justify-center'><DeleteGameEvent id={root.id} onDelete={onDelete} /></div>
+            return <div className='flex items-center justify-center gap-2'>
+              <OGMutateModal data={root} trigger={<Button icon={<EditOutlined/>}/>} />
+              <DeleteGameEvent id={root.id} onDelete={onDelete} />
+            </div>
           }
         },
       ]

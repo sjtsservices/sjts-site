@@ -26,6 +26,10 @@ export const CreateJobSchema = z.object({
     experience: z.number().default(0),
     rate: SalaryRateEnum,
     type: JobTypeEnum,
+    jobCountry: z.string(),
+    jobState: z.string(),
+    jobCity: z.string().optional(),
+    published: z.boolean().optional().default(false)
 });
 
 
