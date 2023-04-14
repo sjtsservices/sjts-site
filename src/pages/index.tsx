@@ -10,6 +10,7 @@ import ServiceSection from "~/components/sections/ServiceSection";
 import WhyChooseUsSection from "~/components/sections/WhyChooseUsSection";
 import OurTeamSection from "~/components/sections/OurTeamSection";
 import MissionVisionSection from "~/components/sections/MissionVisionSection";
+import PageHead from "~/components/MetaTags";
 
 export function getStaticProps() {
   return {
@@ -23,11 +24,11 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>SJTS: Your One-Stop Solution For All Your Needs</title>
-        <meta name="description" content="Our company offers expert advice and great solutions for your needs. We pride ourselves on being a top choice for businesses and individuals looking for reliable, efficient services. With our commitment to excellence, you can trust us to deliver results. Explore our site today and discover why we're the right choice for you." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <PageHead
+        title="Aryan Intl: Your One-Stop Solution For All Your Needs"
+        desc="Our company offers expert advice and great solutions for your needs. We pride ourselves on being a top choice for businesses and individuals looking for reliable, efficient services. With our commitment to excellence, you can trust us to deliver results. Explore our site today and discover why we're the right choice for you."
+        image="/assets/images/pages/aryanintl-home.webp"
+      />
       <main className="">
         <HeroSection />
         <div className="container mx-auto px-5">
@@ -36,12 +37,12 @@ const Home: NextPage = () => {
             <AboutUsSection />
           </div>
 
-          <div className="pb-20"><ServiceSection/></div>
+          <div className="pb-20"><ServiceSection /></div>
 
         </div>
-          <WhyChooseUsSection/>
-          <OurTeamSection/>
-          <MissionVisionSection/>
+        <WhyChooseUsSection />
+        <OurTeamSection />
+        <MissionVisionSection />
       </main>
     </>
   );

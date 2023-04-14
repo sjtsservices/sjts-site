@@ -1,5 +1,6 @@
 import { Card } from 'antd'
 import React from 'react'
+import PageHead from '~/components/MetaTags'
 import PageHeader from '~/components/PageHeader'
 
 export function getStaticProps() {
@@ -13,6 +14,10 @@ export function getStaticProps() {
 const PrivacyPolicy = () => {
     return (
         <>
+        <PageHead
+            title="Privacy Policy"
+            desc="Aryan International LLC: Privacy Policy"
+        />
             <PageHeader title='Privacy Policy' />
  
                 <Card className='mx-auto w-max  my-20'>

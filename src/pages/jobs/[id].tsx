@@ -16,6 +16,7 @@ import { appRouter } from '@/server/api/root';
 import { createInnerTRPCContext } from '@/server/api/trpc';
 import { getServerAuthSession } from '@/server/auth';
 import { api } from '@/utils/api';
+import PageHead from '~/components/MetaTags';
 dayjs.extend(relativeTime);
 
 
@@ -25,13 +26,13 @@ export async function getServerSideProps(
 ) {
   const ssg = createProxySSGHelpers({
     router: appRouter,
-    ctx: createInnerTRPCContext({session: await getServerAuthSession({req: context.req, res: context.res})}),
+    ctx: createInnerTRPCContext({ session: await getServerAuthSession({ req: context.req, res: context.res }) }),
     transformer: superjson,
   });
 
   const id = context.params?.id as string;
 
-  if(!id) return{
+  if (!id) return {
     notFound: true
   }
   // console.log("IDDDDDDDDDDDDD", id)
@@ -53,24 +54,27 @@ export async function getServerSideProps(
 
 
 const SingleJobPage = (props: InferGetServerSidePropsType<typeof getServerSideProps>,) => {
-  const {data:job} = api.jobs.single.useQuery({id: props.id});
+  const { data: job } = api.jobs.single.useQuery({ id: props.id });
   const savedSeeker = window !== undefined ? getJobSeeker() : undefined;
   const checkIsAlreadyApplied = () => {
-    if(window !== undefined ) return;
-    if(!savedSeeker || !job || job === null) return false;
+    if (window !== undefined) return;
+    if (!savedSeeker || !job || job === null) return false;
     return isAlreadyApplied(savedSeeker.id, job.id);
     // return false;
   }
 
 
-  if(!job){
+  if (!job) {
     return <div></div>
   }
 
   return (
     <>
+    <PageHead
+      title={job.title}
+      desc={job.summary||''}
+    />
       <JobPageHeader />
-
       <div className="container mx-auto px-5">
         <StickyBox className='z-10 bg-white py-3 mb-5'>
           <div className="flex justify-between">
