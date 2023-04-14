@@ -28,7 +28,7 @@ const OGMutateModal = ({ onMutate, data, trigger }: EnquiryFormProps) => {
         try {
             const validatedData = await form.validateFields();
             const expiredAt = validatedData.expiredAt && dayjs(validatedData.expiredAt).toDate();
-            const d = convertNullToUndefined(validatedData) as any
+            const d = convertNullToUndefined(validatedData);
             if (data) {
                 const res = await updateMutation.mutateAsync({
                     id: validatedData.id, ...d, expiredAt,

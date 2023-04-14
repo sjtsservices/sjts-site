@@ -1,9 +1,9 @@
-import { JobListItem } from '@/schema/Job.schema'
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import { type JobListItem } from '@/schema/Job.schema'
 import { api } from '@/utils/api'
 import { convertNullToUndefined } from '@/utils/convertNullToUndefiend'
-import { Job } from '@prisma/client'
+import { type Job } from '@prisma/client'
 import { Button, Modal, message } from 'antd'
-import { title } from 'process'
 import React from 'react'
 
 export type ToggleJobStatusProps = {
