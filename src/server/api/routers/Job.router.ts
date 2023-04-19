@@ -91,4 +91,15 @@ export const JobRouter = createTRPCRouter({
             ServerErrorHandler(error)
         }
     }),
+
+    count: protectedProcedure.query(async ({ctx, input}) => {
+        try {
+            const res = await ctx.prisma.job.count();
+            return {
+                count: res
+            }
+        } catch (error) {
+            ServerErrorHandler(error)
+        }
+    })
 })

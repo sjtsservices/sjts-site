@@ -55,7 +55,7 @@ const FooterIconList = () => {
 const Footer = () => {
   const { data: session } = useSession();
 
-  const AdminButton = session ? <Link href={'/admin'}><Button type="dashed" size='large'>Dashboard</Button></Link> : <Button type="dashed" size='large' onClick={() => signIn()}>Admin Login</Button>;
+  const AdminButton = session ? <Link href={'/admin'}><Button type="link" size='large'>Dashboard</Button></Link> : <Button type="link" size='large' onClick={() => signIn()}>Admin Login</Button>;
   return (
     <>
       

@@ -6,11 +6,11 @@ import useQueryData from '~/lib/hooks/useQueryData'
 import { api } from '@/utils/api'
 
 export type EnquiriesLoaderProps = {
-    type: CompanyEnquiryType
+    type?: CompanyEnquiryType
 }
 
 const EnquiriesLoader = ({
-    type = 'GENERAL'
+    type = undefined
 }: EnquiriesLoaderProps) => {
     const { paginate } = useQueryData();
     const { data: enquiries, isLoading, refetch } = api.companyEnquiry.list.useQuery({ paginate, filter: {type} }, {refetchOnWindowFocus: false});

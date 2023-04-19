@@ -94,5 +94,14 @@ export const GameEventRouter = createTRPCRouter({
         }
     }),
     
-
+    count: protectedProcedure.query(async ({ctx, input}) => {
+        try {
+            const res = await ctx.prisma.gameEvent.count();
+            return {
+                count: res
+            }
+        } catch (error) {
+            ServerErrorHandler(error)
+        }
+    })
 })

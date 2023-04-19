@@ -102,7 +102,14 @@ export const CompanyEnquiryRouter = createTRPCRouter({
     }),
 
     count: protectedProcedure.query(async ({ctx}) => {
-        return await ctx.prisma.companyEnquiry.count()
+        try {
+            const res = await ctx.prisma.companyEnquiry.count();
+            return {
+                count: res
+            }
+        } catch (error) {
+            ServerErrorHandler(error)
+        }
     })
 
 })

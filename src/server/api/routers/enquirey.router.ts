@@ -80,4 +80,15 @@ export const EnquiryRouter = createTRPCRouter({
         }
     }),
 
+    count: protectedProcedure.query(async ({ctx, input}) => {
+        try {
+            const res = await ctx.prisma.enquiry.count();
+            return {
+                count: res
+            }
+        } catch (error) {
+            ServerErrorHandler(error)
+        }
+    })
+
 })

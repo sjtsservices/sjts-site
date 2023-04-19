@@ -35,8 +35,8 @@ const items: MenuItem[] = [
   getItem('Dashboard', '/admin', <DashboardOutlined />),
   getItem('Jobs', '/admin/jobs', <ReconciliationOutlined />),
   getItem('Enquiry', '/admin/enquiry', <FormOutlined />),
-  getItem('Game Event', '/admin/game-events', <span className='antdicon'><FaGamepad/></span>),
-  getItem('Settings', '/admin/setting', <SettingOutlined/>),
+  getItem('Game Event', '/admin/game-events', <span className='antdicon'><FaGamepad /></span>),
+  getItem('Settings', '/admin/setting', <SettingOutlined />),
   //   getItem('Clients', '/dashboard/clients', <BuildOutlined />),
   //   getItem('Contacts', '/dashboard/contacts', <ContactsOutlined />),
   //   getItem('Projects', '/dashboard/projects', <FolderOpenOutlined />),
@@ -44,7 +44,7 @@ const items: MenuItem[] = [
 ];
 
 const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
@@ -71,9 +71,11 @@ const DashboardNav: React.FC<PropsWithChildren> = (props: PropsWithChildren) => 
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider className='hidden md:block' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className='text-xl font-semibold text-white p-3 flex justify-center'><Link className='text-white relative block w-full h-full' href={'/'}>
-        <Logo/>
-        </Link></div>
+        <div className='text-xl font-semibold text-white p-3 flex justify-center'>
+          <Link className='text-white relative h-full' href={'/'}>
+            <Logo />
+          </Link>
+        </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} selectedKeys={getSelectedKeys()} mode="inline" items={items} onClick={(e) => handleOnMenuItemClick(e.key)} />
       </Sider>
       <Layout className="site-layout">

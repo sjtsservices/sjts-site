@@ -74,4 +74,15 @@ export const ApplicationRouter = createTRPCRouter({
             ServerErrorHandler(error)
         }
     }),
+
+    count: protectedProcedure.query(async ({ctx}) => {
+        try {
+            const res = await ctx.prisma.applications.count();
+            return {
+                count: res
+            }
+        } catch (error) {
+            ServerErrorHandler(error)
+        }
+    })
 })

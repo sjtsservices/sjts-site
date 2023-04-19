@@ -6,7 +6,7 @@ import { CompanyEnquiry, CompanyEnquiryType, type Enquiry } from '@prisma/client
 import { type ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import React from 'react'
-import AppTable, { type AppTableProps } from '../dashboard/AppTable'
+import AppTable, { PaginationData, type AppTableProps } from '../dashboard/AppTable'
 import DeleteEnquiry from './DeleteEnquiry';
 import EnquiryDetailDrawer from './EnquiryDetailDrawer';
 
@@ -15,7 +15,7 @@ export type EnquiryTableProps = {
     data: CompanyEnquiry[],
     onDelete?: (id: string) => void,
     type?: CompanyEnquiryType
-    
+    pagination?: PaginationData
 } & AppTableProps;
 
 const extraC: {[key in CompanyEnquiryType]?: ColumnsType<CompanyEnquiry>} = {
