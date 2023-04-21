@@ -5,7 +5,7 @@ import WidgetIcon from '../WidgetIcon';
 import { FaEnvelopeSquare } from 'react-icons/fa';
 
 const AllEnquiryCountWidget = () => {
-    const {data:countData, isLoading} = api.enquiry.count.useQuery(undefined, {
+    const {data:countData, isLoading} = api.companyEnquiry.count.useQuery(undefined, {
         refetchOnWindowFocus: false,
     })
   return (
