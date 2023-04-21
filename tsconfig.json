@@ -24,6 +24,7 @@
       "@/server/*": ["./src/server/*"],
       "@/helpers/*": ["./src/helpers/*"],
       "@/schema/*": ["./src/schema/*"],
+      "@/emails/*": ["./src/emails/*"],
       "~/*": ["./src/*"],
     }
   },

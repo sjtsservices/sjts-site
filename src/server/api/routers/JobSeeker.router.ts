@@ -1,3 +1,4 @@
+import { sendThankyouMail } from '@/emails/sender';
 import { ServerConfig } from './../../config';
 import { ServerErrorHandler } from './../../error-handler/ServerErrorHandler';
 import { TRPCError } from '@trpc/server';
@@ -24,12 +25,20 @@ export const JobSeekerRouter = createTRPCRouter({
                         ...rest
                     }
                 });
-                void await ctx.prisma.applications.create({
+                const app =  await ctx.prisma.applications.create({
                     data: {
                         jobId, 
                         jobSeekerId: res.id
+                    },
+                    include: {
+                        job: true
                     }
                 })
+                void sendThankyouMail({
+                    name: res.name,
+                    email: res.email,
+                    jobTitle: app.job.title
+                });
                 return res;
             }
             // CHECK IF USER ALREADY APPILIED FOR THIS JOB
@@ -43,13 +52,20 @@ export const JobSeekerRouter = createTRPCRouter({
                 throw new TRPCError({message: 'already applied', code: 'BAD_REQUEST'})
             }
 
-            void await ctx.prisma.applications.create({
+            const res = await ctx.prisma.applications.create({
                 data: {
                     jobId,
                     jobSeekerId: alreadyCreated.id
+                },
+                include: {
+                    job: true
                 }
             })
-
+            void sendThankyouMail({
+                name: alreadyCreated.name,
+                email: alreadyCreated.email,
+                jobTitle: res.job.title
+            });
             return alreadyCreated;
         } catch (error) {
             ServerErrorHandler(error);

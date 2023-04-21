@@ -11,12 +11,22 @@ const PdfViewer = ({ url }: PdfViewerProps) => {
 
     const [page, setPage] = useState(1);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [loading, setLoading] = useState(true);
+    const [documentLoadFail, setDocumentLoadFail] = useState(false);
 
     const { pdfDocument, pdfPage } = usePdf({
         file: url,
         page,
         canvasRef,
-        onPageLoadFail() {
+        onDocumentLoadFail() {
+            setLoading(false);
+            setDocumentLoadFail(true);
+        },
+        onDocumentLoadSuccess(){
+            setLoading(false);
+            setDocumentLoadFail(false);
+        },
+        onPageLoadFail(){
             return <Result status={'500'} title="Oops' Problem with loading."></Result>
         }
     });
@@ -30,10 +40,17 @@ const PdfViewer = ({ url }: PdfViewerProps) => {
     }, [canvasRef])
 
 
+    if(loading){
+        return <div className='h-96 flex justify-center items-center '><Spin size='large' /></div>
+    }
+
+    if(documentLoadFail) return <Result status={'500'} title="Oops' Problem in loading CV"></Result>;
+
+
     return (
         <div className='grid place-content-center'>
             <div className="w-min">
-                {!pdfDocument && <div className='h-96 flex justify-center items-center '><Spin size='large' /></div>}
+               
                 <div className="w-full">
                     <canvas ref={canvasRef} className="aspect-square" />
                 </div>

@@ -1,5 +1,5 @@
 import { CreateSetting, UpdateSetting } from "@/schema/Setting.schema";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { ServerErrorHandler } from "@/server/error-handler/ServerErrorHandler";
 
 
@@ -27,7 +27,7 @@ export const SettingRouter = createTRPCRouter({
             ServerErrorHandler(error);
         }
     }),
-    get: protectedProcedure.query(async ({ctx, input}) => {
+    get: publicProcedure.query(async ({ctx, input}) => {
         try {
             const res = await ctx.prisma.siteConfig.findFirst();
             return res;

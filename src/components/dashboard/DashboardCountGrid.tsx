@@ -6,7 +6,7 @@ import TotalApplicantCountCard from '../applicant/TotalApplicantCountCard'
 
 const DashboardStatisticsGrid = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-4 gap-5 justify-items-center'>
+    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 justify-items-center'>
         <JobDesktopCountWidget/>
         <AllEnquiryCountWidget/>
         <OGCountCardWidgetCard/>

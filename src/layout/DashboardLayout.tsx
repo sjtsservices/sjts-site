@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Spin } from 'antd';
-import { useSession } from 'next-auth/react'
+import {  useSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import React, { type PropsWithChildren, useEffect } from 'react'
 import DashboardNav from '~/components/dashboard/DashboardNav';
@@ -9,10 +9,18 @@ import DashboardProvider from '~/lib/providers/DashboardProvider';
 
 const DashboardLayout = (props: PropsWithChildren) => {
   const router = useRouter();
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession();
+
+  const checkAuth = () => {
+    if (!session && status === 'unauthenticated') return router.push('/');
+    if(session && status === 'authenticated' && session?.user.role !== 'ADMIN') {
+      // console.log({session})
+      return router.push('/notAdmin');
+    }
+  }
 
   useEffect(() => {
-    if (!session && status === 'unauthenticated') router.push('/');
+    checkAuth()
   }, [])
 
   if (status === 'loading' || status === 'unauthenticated') {

@@ -56,7 +56,7 @@ const ViewApplicant = ({ id }: InferGetServerSidePropsType<typeof getServerSideP
     {
       key: '1',
       label: <span><AppstoreOutlined/> Application</span>,
-      children: <div className='grid grid-cols-1 md:grid-col-2 lg:grid-cols-3 justify-items-center gap-5'>
+      children: <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 justify-items-center gap-5'>
         {
           jobSeeker?.applications.map(app => {
             return <ApplicationCard key={app.id} application={app} />

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type GetServerSidePropsContext } from "next";
 
@@ -41,10 +42,12 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, user }) {
+    session({ session, user  }) {
       // console.log("session in callback::", user)
+      const u = user as any;
       if (session.user) {
         session.user.id = user.id;
+        session.user.role= u.role
         // session.user.role = user.role; <-- put other properties on the session here
       }
       return session;
