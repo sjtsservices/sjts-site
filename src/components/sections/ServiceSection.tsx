@@ -1,6 +1,6 @@
 import React from 'react'
 import ServiceCard, { type ServiceCardProps } from '../ServiceCard';
-import {FaBookReader, FaGraduationCap, FaHandsHelping} from 'react-icons/fa'
+import {FaBookReader, FaGraduationCap, FaHandsHelping, FaGamepad} from 'react-icons/fa'
 import {RiGovernmentFill} from 'react-icons/ri'
 import {MdMail, MdMovie, MdWeb, MdWork} from 'react-icons/md'
 import { nanoid } from 'nanoid';
@@ -22,7 +22,7 @@ const ServiceSectionContent: ServiceCardProps[] =[
     {
         title: 'e-Sport',
         desc: `Aryan International LLC, E-Sport service offers online game event competitions with exciting rewards. Join our platform, compete with the best gamers, and win prizes. Get ready for the ultimate gaming experience with our expertly organized tournaments.`,
-        icon: <FaBookReader/>,
+        icon: <FaGamepad/>,
         href: '/services/e-sport'
     },
     {
