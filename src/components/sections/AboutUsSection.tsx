@@ -9,7 +9,7 @@ const aboutUsContent = {
     sectionImage: '/assets/images/about-img.webp',
     sectionName: 'About us',
     sectionTitle: 'About Aryan International LLC',
-    content: 'Aryan International LLC is a global technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services conglomerate with a mission to develop world-class, value-based learning, governance, and empowerment systems that are responsive to the developmental needs of individuals and society. Our focus on process, performance, and people has enabled us to achieve our goals and establish a reputation as a leader in IT services, digital and business solutions worldwide.',
+    content: 'Aryan International LLC is a global consultancy firm for technology, engineering, construction, print and electronic media, digital advertising, manufacturing, and financial services conglomerate with a mission to develop world-class, value-based learning, governance, and empowerment systems that are responsive to the developmental needs of individuals and society. Our focus on process, performance, and people has enabled us to achieve our goals and establish a reputation as a leader in IT services, digital and business solutions worldwide.',
     keyPoints: [
         'Global Reach',
         'Customer Satisfaction',
