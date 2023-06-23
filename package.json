@@ -42,7 +42,6 @@
     "prisma-pagination": "^0.2.3",
     "rc-virtual-list": "^3.4.13",
     "react": "18.2.0",
-    "react-countup": "^6.4.2",
     "react-dom": "18.2.0",
     "react-email": "1.9.1",
     "react-icons": "^4.8.0",

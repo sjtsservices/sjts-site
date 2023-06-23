@@ -1,7 +1,7 @@
 import { Card } from 'antd'
 import Link from 'next/link';
 import React from 'react'
-import CountUp from 'react-countup';
+
 
 export type StatisticsCardProps = {
     value?: number,
@@ -24,7 +24,7 @@ const StatisticsCard = ({
                 <div className="flex gap-5">
                     <div className="flex items-center ">{icon}</div>
                     <div className="">
-                        <div className='text-4xl font-bold'><CountUp end={value || 0} separator=',' /></div>
+                        <div className='text-4xl font-bold'>{value||0}</div>
                         {
                             title && <div className='text-gray-400 '>{title}</div>
                         }
