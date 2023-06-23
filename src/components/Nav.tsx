@@ -75,6 +75,10 @@ const Nav = () => {
             href: '/contact',
             lable: 'Contact Us'
         },
+        {
+            href: '/pay',
+            lable: 'Pay Now'
+        },
     ]
 
     return (
