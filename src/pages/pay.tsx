@@ -6,8 +6,8 @@ import { MdPayment } from 'react-icons/md'
 
 const PayPage = () => {
     return (
-        <div className='min-h-[500px] lg:min-h-screen grid grid-cols-1 lg:grid-cols-2'>
-            <div className='aspect-square lg:aspect-auto bg-primary text-white flex items-center justify-center'>
+        <div className='min-h-[500px] lg:min-h-screen grid grid-cols-1 lg:grid-cols-2 overflow-hidden'>
+            <div className='aspect-square lg:aspect-auto bg-primary text-white flex items-center justify-center p-5'>
                 <div className='max-w-lg w-full space-y-5'>
                     <h1 className='text-4xl md:text-6xl font-bold uppercase text-clip bg-clip-text bg-gradient-to-tr from-white via-white to-slate-400 text-transparent'>Secure Payment for Our Consultancy Services</h1>
                     <p>Make a secure payment for our professional consultancy services using our convenient and reliable payment gateway.</p>
@@ -18,7 +18,7 @@ const PayPage = () => {
                 </div>
             </div>
 
-            <div className='py-20 flex items-center justify-center'>
+            <div className='py-20 flex items-center justify-center w-full'>
                 <div className="max-w-lg">
                     <div className='space-y-3'>
                         <div className='text-lg font-bold text-gray-500'>Proceed to Payment</div>
@@ -29,8 +29,8 @@ const PayPage = () => {
                     <Divider>OR</Divider>
                     <div className='space-y-3'>
                         <div className='text-lg font-bold text-gray-500'>Scan QR Code for Instant Payment</div>
-                        <div className='aspect-square relative'>
-                            <Image src="/assets/images/payment-qr.jpg" alt="Payment QR" width={500} height={500} />
+                        <div className=' relative aspect-square'>
+                            <Image className='object-fill' src="/assets/images/payment-qr.jpg" alt="Payment QR" fill />
                         </div>
                     </div>
                 </div>
