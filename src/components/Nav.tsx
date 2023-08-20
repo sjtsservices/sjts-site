@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import NavLink, { type NavLinkProps } from './Navlink'
 import { nanoid } from 'nanoid';
 import { Button, Drawer, List } from 'antd';
@@ -7,9 +7,11 @@ import { CustomerServiceOutlined, MenuOutlined } from '@ant-design/icons';
 import MobileNav from './MobileNav';
 import Logo from './Logo';
 import Link from 'next/link';
+import { SiteContext } from '~/lib/providers/SiteProvider';
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
+    const {info} = useContext(SiteContext)
 
     const showDrawer = () => {
         setOpen(true);
@@ -100,8 +102,8 @@ const Nav = () => {
                     </div>
 
                     <div className="flex-grow-0 w-max space-x-2 flex">
-                        <a href='tel:7007628038' className='hidden md:block'><Button type="primary" size='large' icon={<CustomerServiceOutlined />}>+91 7007628038</Button></a>
-                        <a href='tel:7007628038' className='block md:hidden'><Button type="primary" icon={<CustomerServiceOutlined />}></Button></a>
+                        <a href={info ? `tel:${info.phone}` : 'tel:971503077608'} className='hidden md:block'><Button type="primary" size='large' icon={<CustomerServiceOutlined />}>{info ? info.phone : '+971 503077608'}</Button></a>
+                        <a href={info ? `tel:${info.phone}` : 'tel:971503077608'} className='block md:hidden'><Button type="primary" icon={<CustomerServiceOutlined />}></Button></a>
                         <Button className='md:hidden' onClick={showDrawer} icon={<MenuOutlined/>}></Button>
                     </div>
                 </div>
