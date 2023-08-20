@@ -55,9 +55,9 @@ const PdfViewer = ({ url }: PdfViewerProps) => {
                     <canvas ref={canvasRef} className="aspect-square" />
                 </div>
                 {pdfDocument && pdfDocument.numPages && (
-                    <nav className='w-full p-y-2 px-5 bg-gray-50 flex items-center justify-between rounded' >
+                    <nav className='w-full p-y-2 px-5 bg-gray-50 flex items-center justify-between rounded'>
 
-                        <Button size='large' disabled={page === 1} onClick={() => setPage(page - 1)} type="ghost" icon={<LeftOutlined />}>
+                        <Button size='large' disabled={page === 1} onClick={() => setPage(page - 1)} type="ghost" icon={<LeftOutlined/>}>
                             Previous
                         </Button>
 
