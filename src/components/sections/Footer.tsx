@@ -82,7 +82,7 @@ const Footer = () => {
           <div className="col-start-3 col-end-5 md:col-auto">
             <FooterLinkList title="Company" list={[
               { href: '/about', lable: 'About Us' },
-              { href: '/team', lable: 'Our Team' },
+              { href: '/company-docs', lable: 'Company Docs' },
               { href: '/terms-condition', lable: 'Terms & Condition' },
               { href: '/privacy-policy', lable: 'Privacy Policy' },
 
