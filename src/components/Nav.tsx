@@ -63,6 +63,10 @@ const Nav = () => {
                     href: '/services/entertainment',
                     lable: 'Graphics & Media Services'
                 },
+                {
+                    href: '/services/professional',
+                    lable: 'Professional Services'
+                },
             ]
         },
         {
